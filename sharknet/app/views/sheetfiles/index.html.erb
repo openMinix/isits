@@ -1,0 +1,27 @@
+<h1>Listing sheetfiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sheetfiles.each do |sheetfile| %>
+      <tr>
+        <td><%= sheetfile.day %></td>
+        <td><%= link_to 'Show', sheetfile %></td>
+        <td><%= link_to 'Edit', edit_sheetfile_path(sheetfile) %></td>
+        <td><%= link_to 'Destroy', sheetfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sheetfile', new_sheetfile_path %>

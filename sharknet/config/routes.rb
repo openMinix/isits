@@ -1,4 +1,6 @@
 Sharknet::Application.routes.draw do
+  resources :sheetfiles
+
   resources :timesheets
 
   devise_for :users
