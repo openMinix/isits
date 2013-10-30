@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030135251) do
+ActiveRecord::Schema.define(version: 20131030173352) do
+
+  create_table "activities", force: true do |t|
+    t.string   "type_activity"
+    t.string   "description"
+    t.integer  "work_hours"
+    t.boolean  "extra"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sheetfiles", force: true do |t|
     t.date     "day"

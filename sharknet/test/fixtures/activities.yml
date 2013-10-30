@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type_activity: MyString
+  description: MyString
+  work_hours: 1
+  extra: false
+
+two:
+  type_activity: MyString
+  description: MyString
+  work_hours: 1
+  extra: false

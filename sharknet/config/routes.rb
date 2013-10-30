@@ -1,4 +1,6 @@
 Sharknet::Application.routes.draw do
+  resources :activities
+
   resources :sheetfiles
 
   resources :timesheets
