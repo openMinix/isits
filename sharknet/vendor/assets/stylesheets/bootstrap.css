@@ -6803,3 +6803,61 @@ td.visible-print {
     display: none !important;
   }
 }
+
+/* ----------- stylized ----------- */
+.form-sign-in
+{
+	margin:0 auto;
+	width:400px;
+	padding:14px;
+}
+
+#form-signin
+{
+	border:solid 2px #b7ddf2;
+	background:#ebf4fb;
+}
+
+#form-signin h1 
+{
+	font-size:20px;
+	font-weight:bold;
+	margin-bottom:15px;
+	text-align:center;
+}
+
+#form-signin p{
+font-size:11px;
+color:#666666;
+margin-bottom:20px;
+border-bottom:solid 1px #b7ddf2;
+padding-bottom:10px;
+}
+#form-signin label{
+display:block;
+font-weight:bold;
+text-align:right;
+width:140px;
+float:left;
+padding-top:5px;
+}
+#form-signin .signin-input{
+float:left;
+font-size:12px;
+padding:4px 2px;
+border:solid 1px #aacfe4;
+width:200px;
+margin:2px 0 20px 10px;
+}
+#form-signin .signin-submit{
+clear:both;
+margin-left:150px;
+width:125px;
+height:31px;
+background:#666666 url(img/button.png) no-repeat;
+text-align:center;
+line-height:31px;
+color:#FFFFFF;
+font-size:11px;
+font-weight:bold;
+}
