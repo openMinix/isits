@@ -25,6 +25,7 @@ class TimesheetsController < ApplicationController
   # POST /timesheets.json
   def create
     @timesheet = Timesheet.new(timesheet_params)
+    @timesheet.user_id = current_user.id
 
     respond_to do |format|
       if @timesheet.save
