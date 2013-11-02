@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030174355) do
+ActiveRecord::Schema.define(version: 20131102184335) do
 
   create_table "activities", force: true do |t|
     t.string   "type_activity"
@@ -20,20 +20,29 @@ ActiveRecord::Schema.define(version: 20131030174355) do
     t.boolean  "extra"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sheetfile_id"
   end
+
+  add_index "activities", ["sheetfile_id"], name: "index_activities_on_sheetfile_id"
 
   create_table "sheetfiles", force: true do |t|
     t.date     "day"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "timesheet_id"
   end
+
+  add_index "sheetfiles", ["timesheet_id"], name: "index_sheetfiles_on_timesheet_id"
 
   create_table "timesheets", force: true do |t|
     t.string   "status"
     t.date     "period"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "timesheets", ["user_id"], name: "index_timesheets_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
