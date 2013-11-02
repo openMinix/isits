@@ -4,7 +4,9 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
+
+    @sheetfile_id = params[ :my_activity ][ :sheetfile_id].to_i
+    @activities = Activity.where( sheetfile_id: @sheetfile_id )
   end
 
   # GET /activities/1

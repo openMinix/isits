@@ -5,5 +5,7 @@
   <%= @sheetfile.day %>
 </p>
 
+<%= link_to 'View activities', activities_path(:my_activity => { :sheetfile_id => @sheetfile.id }) %>
+
 <%= link_to 'Edit', edit_sheetfile_path(@sheetfile) %> |
 <%= link_to 'Back', sheetfiles_path %>

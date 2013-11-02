@@ -10,5 +10,7 @@
   <%= @timesheet.period %>
 </p>
 
+<%= link_to 'View sheetfiles', sheetfiles_path(:my_sheetfile => { :timesheet_id => @timesheet.id }) %>
+
 <%= link_to 'Edit', edit_timesheet_path(@timesheet) %> |
 <%= link_to 'Back', timesheets_path %>

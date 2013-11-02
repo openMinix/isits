@@ -4,7 +4,8 @@ class SheetfilesController < ApplicationController
   # GET /sheetfiles
   # GET /sheetfiles.json
   def index
-    @sheetfiles = Sheetfile.all
+    @timesheet_id = params[ :my_sheetfile ][ :timesheet_id].to_i
+    @sheetfiles = Sheetfile.where( timesheet_id: @timesheet_id )
   end
 
   # GET /sheetfiles/1

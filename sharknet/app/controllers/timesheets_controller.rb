@@ -4,7 +4,7 @@ class TimesheetsController < ApplicationController
   # GET /timesheets
   # GET /timesheets.json
   def index
-    @timesheets = Timesheet.all
+    @timesheets = current_user.timesheets 
   end
 
   # GET /timesheets/1
