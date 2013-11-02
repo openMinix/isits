@@ -15,6 +15,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   def new
     @activity = Activity.new
+    @activity.sheetfile_id = params[ :my_activity ][ :sheetfile_id].to_i
   end
 
   # GET /activities/1/edit
@@ -69,6 +70,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:type_activity, :description, :work_hours, :extra)
+      params.require(:activity).permit(:type_activity, :description, :work_hours, :extra, :sheetfile_id)
     end
 end
