@@ -21,4 +21,5 @@
 </p>
 
 <%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', activities_path %>
+<%= link_to 'Back', activities_path(:my_activity => { :sheetfile_id => @activity.sheetfile_id }) %>
+

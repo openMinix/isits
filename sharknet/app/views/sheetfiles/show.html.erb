@@ -8,4 +8,4 @@
 <%= link_to 'View activities', activities_path(:my_activity => { :sheetfile_id => @sheetfile.id }) %>
 
 <%= link_to 'Edit', edit_sheetfile_path(@sheetfile) %> |
-<%= link_to 'Back', sheetfiles_path %>
+<%= link_to 'Back', sheetfiles_path(:my_sheetfile => { :timesheet_id => @sheetfile.timesheet_id }) %>

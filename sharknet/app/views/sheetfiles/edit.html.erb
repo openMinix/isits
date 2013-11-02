@@ -6,4 +6,5 @@
 
 
 <%= link_to 'Show', @sheetfile %> |
-<%= link_to 'Back', sheetfiles_path %>
+<%= link_to 'Back', sheetfiles_path(:my_sheetfile => { :timesheet_id => @sheetfile.timesheet_id }) %>
+
