@@ -1,4 +1,4 @@
 class Sheetfile < ActiveRecord::Base
 	belongs_to :timesheet
-	has_meny :activities
+	has_many :activities
 end
