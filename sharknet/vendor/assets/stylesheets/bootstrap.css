@@ -6805,21 +6805,27 @@ td.visible-print {
 }
 
 /* ----------- stylized ----------- */
-.form-sign-in{
-margin:0 auto;
-width:400px;
-padding:14px;
+.form-sign-in
+{
+	margin:0 auto;
+	width:400px;
+	padding:14px;
 }
-#form-signin{
-border:solid 2px #b7ddf2;
-background:#ebf4fb;
+
+#form-signin
+{
+	border:solid 2px #b7ddf2;
+	background:#ebf4fb;
 }
-#form-signin h1 {
-font-size:20px;
-font-weight:bold;
-margin-bottom:15px;
-text-align:center;
+
+#form-signin h1 
+{
+	font-size:20px;
+	font-weight:bold;
+	margin-bottom:15px;
+	text-align:center;
 }
+
 #form-signin p{
 font-size:11px;
 color:#666666;
