@@ -1,6 +1,18 @@
 <h1>New timesheet</h1>
 
-<%= render 'form' %>
+<%= form_for @timesheet do |f| %>
+
+<%= f.label :status %>:  
+<%= f.select :status, [['OPEN','OPEN'],['SUBMITTED','SUBMITTED'],['APPROVED','APPROVED'],['REJECTED','REJECTED']] %>
+<br>
+<%= f.label :period %>:
+<%= f.date_select "period", :start_year => 2008,
+                               :use_month_numbers => false,
+                               :discard_day => false,
+                               :order => [:year, :month, :day]%>
+
+<%= f.submit %>
+<% end %>
 
 <%= link_to 'Back', timesheets_path %>
 
