@@ -1,8 +1,21 @@
-<h1>Editing timesheet</h1>
+<div id="form-signin">
+	<%= form_for @timesheet do |f| %>
+			<h1>Editing timesheet</h1>
+			<%= f.label :status %>
+			<%= f.select :status, [['OPEN','OPEN'],['SUBMITTED','SUBMITTED'],['APPROVED','APPROVED'],['REJECTED','REJECTED']], :input_html => { :value => @timesheet.status } %>
+			
+			<%= f.label :period %>
+			<%= f.date_select "period", :start_year => 2008,
+                               :use_month_numbers => false,
+                               :discard_day => false,
+                               :order => [:year, :month, :day], :input_html => { :value => @timesheet.period } %>
 
-<%= render 'form' %>
+			<%= f.submit "Update timesheet", :class => 'signin-submit' %>
+	<% end %>
+	<%= link_to 'Add sheetfile', new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet.id }) %>
 
-<%= link_to 'Add sheetfile', new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet.id }) %>
+	<%= link_to 'Show', @timesheet %> |
+	<%= link_to 'Back', timesheets_path %>
+</div>	
 
-<%= link_to 'Show', @timesheet %> |
-<%= link_to 'Back', timesheets_path %>
+
