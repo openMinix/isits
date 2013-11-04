@@ -6846,6 +6846,13 @@ td.visible-print {
 	margin-left:10px;
 	margin-top: 8px;
 }
+#form-signin select{
+	float:left;
+	font-size:12px;
+	border:solid 1px #aacfe4;
+	margin:2px 0 20px 6px;
+	padding:4px 2px;
+}
 #form-signin .signin-submit{
 	clear:both;
 	margin-left:150px;

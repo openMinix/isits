@@ -1,18 +1,18 @@
-<h1>New timesheet</h1>
-
-<%= form_for @timesheet do |f| %>
-
-<%= f.label :status %>:  
-<%= f.select :status, [['OPEN','OPEN'],['SUBMITTED','SUBMITTED'],['APPROVED','APPROVED'],['REJECTED','REJECTED']] %>
-<br>
-<%= f.label :period %>:
-<%= f.date_select "period", :start_year => 2008,
+<div id="form-signin">
+	<%= form_for @timesheet do |f| %>
+		<h1>New timesheet</h1>
+		<%= f.label :status %>
+		<%= f.select :status, [['OPEN','OPEN'],['SUBMITTED','SUBMITTED'],['APPROVED','APPROVED'],['REJECTED','REJECTED']] %>
+		
+		<%= f.label :period %>
+		<%= f.date_select "period", :start_year => 2008,
                                :use_month_numbers => false,
                                :discard_day => false,
-                               :order => [:year, :month, :day]%>
+                               :order => [:year, :month, :day] %>
 
-<%= f.submit %>
-<% end %>
+		<%= f.submit "Create timesheet", :class => 'signin-submit' %>
+	<% end %>
+	<%= link_to 'Back', timesheets_path %>
+</div>
 
-<%= link_to 'Back', timesheets_path %>
 
