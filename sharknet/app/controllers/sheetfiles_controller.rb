@@ -14,7 +14,8 @@ class SheetfilesController < ApplicationController
 
   # GET /sheetfiles/new
   def new
-    @sheetfile = Sheetfile.new
+    @sheetfile = Sheetfile.new 
+    @sheetfile.timesheet_id = params[ :my_sheetfile ][ :timesheet_id].to_i
   end
 
   # GET /sheetfiles/1/edit
@@ -69,6 +70,6 @@ class SheetfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sheetfile_params
-      params.require(:sheetfile).permit(:day)
+      params.require(:sheetfile).permit(:day, :timesheet_id)
     end
 end

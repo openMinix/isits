@@ -12,9 +12,14 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :timesheet_id  %><br>
+    <%= f.text_field :timesheet_id, :readonly => true %>
+  </div>
+  <div class="field">
     <%= f.label :day %><br>
     <%= f.date_select :day %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

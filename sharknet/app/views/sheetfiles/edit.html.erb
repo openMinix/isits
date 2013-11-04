@@ -2,5 +2,8 @@
 
 <%= render 'form' %>
 
+<%= link_to 'Add activity', new_activity_path(:my_activity => { :sheetfile_id => @sheetfile.id }) %>
+
+
 <%= link_to 'Show', @sheetfile %> |
 <%= link_to 'Back', sheetfiles_path %>

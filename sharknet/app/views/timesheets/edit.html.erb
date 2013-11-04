@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
+<%= link_to 'Add sheetfile', new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet.id }) %>
+
 <%= link_to 'Show', @timesheet %> |
 <%= link_to 'Back', timesheets_path %>
