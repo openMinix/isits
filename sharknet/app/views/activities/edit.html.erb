@@ -1,7 +1,24 @@
-<h1>Editing activity</h1>
+<div id="form-signin">
+	<%= form_for @activity do |f| %>
+		<h1>Editing activity</h1>
+		
+		<%= f.label :sheetfile_id %>
+		<%= f.text_field :sheetfile_id, :input_html => { :value => @activity.sheetfile_id } , :class => 'signin-input' %>
+		
+		<%= f.label :type_activity %>
+		<%= f.text_field :type_activity, :input_html => { :value => @activity.type_activity }, :class => 'signin-input' %>
+		
+		<%= f.label :description %>
+		<%= f.text_field :description, :input_html => { :value => @activity.description }, :class => 'signin-input' %>
+		
+		<%= f.label :work_hours %>
+		<%= f.number_field :work_hours, :input_html => { :value => @activity.work_hours }, :class => 'signin-input' %>
+		
+		<%= f.label :extra %>
+		<%= f.check_box :extra, :input_html => { :value => @activity.extra }, :class => 'signin-checkbox' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @activity %> |
-<%= link_to 'Back', activities_path(:my_activity => { :sheetfile_id => @activity.sheetfile_id }) %>
-
+		<%= f.submit "Update activity", :class => 'signin-submit' %>
+	<% end %>
+	<%= link_to 'Show', @activity %> |
+	<%= link_to 'Back', activities_path(:my_activity => { :sheetfile_id => @activity.sheetfile_id }) %>
+</div>	
