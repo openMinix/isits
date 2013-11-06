@@ -1,9 +1,9 @@
-<div id="form-signin">
+<div id="myform">
 	<%= form_for @sheetfile do |f| %>
 		<h1>New sheetfile</h1>
 		
 		<%= f.label :timesheet_id %>
-		<%= f.text_field :timesheet_id, :input_html => { :value => @sheetfile.timesheet_id }, :class => 'signin-input' %>
+		<%= f.text_field :timesheet_id, :input_html => { :value => @sheetfile.timesheet_id }, :class => 'signin-input', :readonly => true %>
 
 		<%= f.label :day %>
 		<%= f.date_select "day", :start_year => 2008,
@@ -11,7 +11,7 @@
                                :discard_day => false,
                                :order => [:year, :month, :day] %>
 		
-		<%= f.submit "Create sheetfile", :class => 'signin-submit' %>
+		<%= f.submit "Create sheetfile", :class => 'btn btn-primary signin-submit' %>
 	<% end %>
 	<%= link_to 'Back', sheetfiles_path %>
 </div>

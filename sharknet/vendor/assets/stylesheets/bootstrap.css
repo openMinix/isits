@@ -6806,16 +6806,16 @@ td.visible-print {
 
 /* ----------- stylized ----------- */
 
-#form-signin
+#myform
 {
 	border:solid 2px #b7ddf2;
 	background:#ebf4fb;
-	margin:0 auto;
+	margin:50px auto;
 	width:400px;
 	padding:14px;
 }
 
-#form-signin h1 
+#myform h1 
 {
 	font-size:20px;
 	font-weight:bold;
@@ -6823,7 +6823,7 @@ td.visible-print {
 	text-align:center;
 }
 
-#form-signin label{
+#myform label{
 	display:block;
 	font-weight:bold;
 	text-align:right;
@@ -6831,7 +6831,7 @@ td.visible-print {
 	float:left;
 	padding-top:5px;
 }
-#form-signin .signin-input{
+#myform .signin-input{
 	float:left;
 	font-size:12px;
 	padding:4px 2px;
@@ -6839,32 +6839,34 @@ td.visible-print {
 	width:200px;
 	margin:2px 0 20px 10px;
 }
-#form-signin .signin-checkbox{
+#myform .signin-checkbox{
 	float:left;
 	font-size:12px;
 	border:solid 1px #aacfe4;
 	margin-left:10px;
 	margin-top: 8px;
 }
-#form-signin select{
+#myform select{
 	float:left;
 	font-size:12px;
 	border:solid 1px #aacfe4;
 	margin:2px 0 20px 6px;
 	padding:4px 2px;
 }
-#form-signin .signin-submit{
+#myform .signin-submit{
 	clear:both;
 	margin-left:150px;
-	width:125px;
-	text-align:center;
-	line-height:31px;
-	background-color:#b7ddf2;
-	border:none;
-	color:#000000;
-	font-size:11px;
-	font-weight:bold;
 }
 input:focus{
     outline: 0 !important;
+}
+
+.listing-table table, td, th{
+	border:1px solid black;
+}
+
+.top-right-align{
+	top:0;
+	right:0;
+	position:fixed;
 }

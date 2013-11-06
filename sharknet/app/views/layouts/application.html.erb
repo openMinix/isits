@@ -8,12 +8,14 @@
 </head>
 <body>
 
+<div class='top-right-align'>
 <% if user_signed_in? %>
-<%= "<p>Bun venit!</p>".html_safe %>
-<%= link_to "Sign_out", destroy_user_session_path, :method => :delete  %>
+<%= "<p class='btn btn-primary'>Bun venit!</p>".html_safe %>
+<%= link_to "Sign_out", destroy_user_session_path, :method => :delete, :class => 'btn btn-info'  %>
 <% else %>
-<%= link_to "Sign_in", new_user_session_path %>
+<%= link_to "Sign_in", new_user_session_path, :class => 'btn btn-info' %>
 <% end %>
+</div>
 
 
 <%= yield %>

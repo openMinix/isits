@@ -1,4 +1,4 @@
-<div id="form-signin">
+<div id="myform">
 	<%= form_for @activity do |f| %>
 		<h1>Editing activity</h1>
 		
@@ -17,7 +17,7 @@
 		<%= f.label :extra %>
 		<%= f.check_box :extra, :input_html => { :value => @activity.extra }, :class => 'signin-checkbox' %>
 
-		<%= f.submit "Update activity", :class => 'signin-submit' %>
+		<%= f.submit "Update activity", :class => 'btn btn-primary signin-submit' %>
 	<% end %>
 	<%= link_to 'Show', @activity %> |
 	<%= link_to 'Back', activities_path(:my_activity => { :sheetfile_id => @activity.sheetfile_id }) %>

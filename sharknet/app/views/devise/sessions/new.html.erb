@@ -1,4 +1,4 @@
-<div id="form-signin">
+<div id="myform">
 	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 			<h1>Sign in</h1>
 			<%= f.label :email %>
@@ -12,7 +12,7 @@
 				<%= f.check_box :remember_me, :class => 'signin-checkbox' %>
 			<% end -%>
 
-			<%= f.submit "Sign in", :class => 'signin-submit' %>
+			<%= f.submit "Sign in", :class => 'btn btn-primary signin-submit' %>
 	<% end %>
 	<%= render "devise/shared/links" %>
 </div> 
