@@ -5,4 +5,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :timesheets
+
+  def self.create_timesheets
+    User.all.each do |user|
+      @timesheet = Timesheet.new
+      @timesheet.user_id = user.id
+         
+      @timesheet.status = "OPEN"
+      @timesheet.period = Date.today
+
+      @timesheet.save
+                        
+    end 
+  end
 end
