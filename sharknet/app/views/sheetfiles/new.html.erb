@@ -3,7 +3,7 @@
 		<h1>New sheetfile</h1>
 		
 		<%= f.label :timesheet_id %>
-		<%= f.text_field :timesheet_id, :input_html => { :value => @sheetfile.timesheet_id }, :class => 'signin-input' %>
+		<%= f.text_field :timesheet_id, :input_html => { :value => @sheetfile.timesheet_id }, :class => 'signin-input', :readonly => true %>
 
 		<%= f.label :day %>
 		<%= f.date_select "day", :start_year => 2008,
