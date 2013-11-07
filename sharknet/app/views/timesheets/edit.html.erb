@@ -1,4 +1,4 @@
-<div id="form-signin">
+<div id="myform">
 	<%= form_for @timesheet do |f| %>
 			<h1>Editing timesheet</h1>
 			<%= f.label :status %>
@@ -10,7 +10,7 @@
                                :discard_day => false,
                                :order => [:year, :month, :day], :input_html => { :value => @timesheet.period } %>
 
-			<%= f.submit "Update timesheet", :class => 'signin-submit' %>
+			<%= f.submit "Update timesheet", :class => 'btn btn-primary signin-submit' %>
 	<% end %>
 	<%= link_to 'Add sheetfile', new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet.id }) %>
 

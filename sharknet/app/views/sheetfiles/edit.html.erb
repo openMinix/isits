@@ -1,4 +1,4 @@
-<div id="form-signin">
+<div id="myform">
 	<%= form_for @sheetfile do |f| %>
 		<h1> Edit sheetfile </h1>
 		
@@ -10,7 +10,7 @@
                                :use_month_numbers => false,
                                :discard_day => false,
                                :order => [:year, :month, :day] %>
-		<%= f.submit "Update sheetfile", :class => 'signin-submit' %>					   
+		<%= f.submit "Update sheetfile", :class => 'btn btn-primary signin-submit' %>					   
 	<% end %>	
 	<%= link_to 'Add activity', new_activity_path(:my_activity => { :sheetfile_id => @sheetfile.id }) %>
 	<%= link_to 'Show', @sheetfile %> |

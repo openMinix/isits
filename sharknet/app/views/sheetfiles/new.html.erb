@@ -1,4 +1,4 @@
-<div id="form-signin">
+<div id="myform">
 	<%= form_for @sheetfile do |f| %>
 		<h1>New sheetfile</h1>
 		
@@ -11,7 +11,7 @@
                                :discard_day => false,
                                :order => [:year, :month, :day] %>
 		
-		<%= f.submit "Create sheetfile", :class => 'signin-submit' %>
+		<%= f.submit "Create sheetfile", :class => 'btn btn-primary signin-submit' %>
 	<% end %>
 	<%= link_to 'Back', sheetfiles_path %>
 </div>
