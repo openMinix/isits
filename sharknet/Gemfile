@@ -52,3 +52,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+#Railroad for class diagram generator
+#gem 'railroad'
