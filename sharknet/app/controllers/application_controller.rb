@@ -7,10 +7,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
 
+def after_sign_in_path_for(resource)
+   timesheets_path
+  end
   protected
 
   def configure_devise_permitted_parameters
-    registration_params = [:user_fullname,:user_job , :email, :password, :password_confirmation]
+    registration_params = [:user_fullname, :user_job , :email, :password, :password_confirmation]
 
     if params[:action] == 'update'
       devise_parameter_sanitizer.for(:account_update) { 
