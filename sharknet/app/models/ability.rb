@@ -5,10 +5,11 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
         user ||= User.new 
-        if user.user_job == "admin"
+        if user.user_job == 'ADMINISTRATOR'
          can :manage, :all
        else
          can :manage, :all
+         cannot :manage, User 
        end
     #
     # The first argument to `can` is the action you are giving the user 

@@ -1,6 +1,6 @@
 <div id="myform">
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-		<h1>Sign up</h1>
+		<h1>Add user</h1>
 		<%= devise_error_messages! %>
 
 		<%= f.label :email %>
@@ -11,8 +11,15 @@
 
 		<%= f.label :password_confirmation %>
 		<%= f.password_field :password_confirmation, :class => 'signin-input' %>
+    
+    <%= f.label :user_fullname%>
+    <%= f.text_field :user_fullname, :class => 'signin-input' %>
+    
+    <%= f.label :user_job%>
+    <%= f.select :user_job, [ ['ADMINISTRATOR', 'ADMINISTRATOR'], ['EMPLOYEE','EMPLOYEE'], [ 'DEPT_HEAD' , 'DEPT_HEAD'  ], ['DIV_HEAD' , 'DIV_HEAD' ],
+    ['DIRECTOR ' ,'DIRECTOR' ]   ] %>
 
-		<%= f.submit "Sign up", :class => 'btn btn-primary signin-submit' %>
+		<%= f.submit "Add user", :class => 'btn btn-primary signin-submit' %>
 	<% end %>	
 	<%= render "devise/shared/links" %>
 </div>
