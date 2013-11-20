@@ -1,7 +1,13 @@
 Sharknet::Application.routes.draw do
+<<<<<<< HEAD
   resources :departments
 
   resources :divisions
+=======
+  resources :projects
+
+  resources :clients
+>>>>>>> 4542c3fc34bce5ac41bffb758979278d0129f0ef
 
   resources :activities
 
