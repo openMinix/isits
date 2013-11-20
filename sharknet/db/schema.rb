@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131102184335) do
+ActiveRecord::Schema.define(version: 20131120172210) do
 
   create_table "activities", force: true do |t|
     t.string   "type_activity"
@@ -24,6 +24,21 @@ ActiveRecord::Schema.define(version: 20131102184335) do
   end
 
   add_index "activities", ["sheetfile_id"], name: "index_activities_on_sheetfile_id"
+
+  create_table "clients", force: true do |t|
+    t.string   "client_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects", force: true do |t|
+    t.string   "project_name"
+    t.integer  "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "projects", ["client_id"], name: "index_projects_on_client_id"
 
   create_table "sheetfiles", force: true do |t|
     t.date     "day"
