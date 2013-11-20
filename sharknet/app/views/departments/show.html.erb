@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dept name:</strong>
+  <%= @department.dept_name %>
+</p>
+
+<p>
+  <strong>Division:</strong>
+  <%= @department.division_id %>
+</p>
+
+<%= link_to 'Edit', edit_department_path(@department) %> |
+<%= link_to 'Back', departments_path(:my_department => { :division_id => @department.division_id }) %>

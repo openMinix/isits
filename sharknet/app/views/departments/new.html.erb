@@ -1,0 +1,18 @@
+<div id="myform">
+	<%= form_for @department do |f| %>
+		<h1>New department</h1>
+		
+		<%= f.label :dept_name %><br>
+		<%= f.text_field :dept_name, :class => 'signin-input' %>
+		
+		
+		<%= f.label :division_id %><br>
+		<%= f.text_field :division_id, :input_html => { :value => @department.division_id }, :class => 'signin-input', :readonly => true %>
+		
+		
+		<%= f.submit "Create department", :class => 'btn btn-primary signin-submit' %>
+	<% end %>
+	<%= link_to 'Back', departments_path(:my_department => { :division_id => @department.division_id }) %>
+</div>
+
+
