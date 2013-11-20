@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
+
 ActiveRecord::Schema.define(version: 20131120151430) do
-=======
+
 ActiveRecord::Schema.define(version: 20131120172210) do
->>>>>>> 4542c3fc34bce5ac41bffb758979278d0129f0ef
+
 
   create_table "activities", force: true do |t|
     t.string   "type_activity"
@@ -29,37 +29,36 @@ ActiveRecord::Schema.define(version: 20131120172210) do
 
   add_index "activities", ["sheetfile_id"], name: "index_activities_on_sheetfile_id"
 
-<<<<<<< HEAD
+
   create_table "departments", force: true do |t|
     t.string   "dept_name"
     t.integer  "division_id"
-=======
+
   create_table "clients", force: true do |t|
     t.string   "client_name"
->>>>>>> 4542c3fc34bce5ac41bffb758979278d0129f0ef
+
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
+
   add_index "departments", ["division_id"], name: "index_departments_on_division_id"
 
   create_table "divisions", force: true do |t|
     t.string   "div_name"
-=======
+
   create_table "projects", force: true do |t|
     t.string   "project_name"
     t.integer  "client_id"
->>>>>>> 4542c3fc34bce5ac41bffb758979278d0129f0ef
+
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-=======
+
   add_index "projects", ["client_id"], name: "index_projects_on_client_id"
 
->>>>>>> 4542c3fc34bce5ac41bffb758979278d0129f0ef
+
   create_table "sheetfiles", force: true do |t|
     t.date     "day"
     t.datetime "created_at"
