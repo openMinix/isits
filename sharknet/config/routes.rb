@@ -1,4 +1,13 @@
 Sharknet::Application.routes.draw do
+
+  resources :departments
+
+  resources :divisions
+
+  resources :projects
+
+  resources :clients
+
   resources :activities
 
   resources :sheetfiles
