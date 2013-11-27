@@ -5,8 +5,15 @@
 		<%= f.label :project_name %><br>
 		<%= f.text_field :project_name, :class => 'signin-input' %>
 		
-		<%= f.label :client_id %><br>
-		<%= f.text_field :client_id, :input_html => { :value => @project.client_id }, :class => 'signin-input', :readonly => true %>
+		<%= f.hidden_field :client_id, :input_html => { :value => @project.client_id }, :class => 'signin-input', :readonly => true %>
+
+      <%= fields_for @project.client do |client_fields| %>
+      <div class="field">
+             <%= f.label :client %><br>
+             <%= client_fields.text_field :client_name, :readonly => true %>
+      </div>
+      <% end %>
+
 		
 		<%= f.submit "Create project", :class => 'btn btn-primary signin-submit' %>
 	<% end %>
