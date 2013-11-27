@@ -3,11 +3,11 @@
 		<h1>Editing department</h1>
 		
 		<%= f.label :dept_name %><br>
-		<%= f.text_field :dept_name %>
+		<%= f.text_field :dept_name, :class => 'signin-input' %>
 		
 		
 		<%= f.label :division_id %><br>
-		<%= f.text_field :division_id %>
+		<%= f.text_field :division_id, :class => 'signin-input' %>
 		
 		<%= f.submit "Update department", :class => 'btn btn-primary signin-submit' %>
 	<% end %>
