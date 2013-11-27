@@ -15,11 +15,16 @@
     <%= f.label :project_name %><br>
     <%= f.text_field :project_name %>
   </div>
-  <div class="field">
+
+    <%= fields_for @project.client do |client_fields| %>
+    <div class="field">
     <%= f.label :client %><br>
-    <%= f.text_field :client %>
-  </div>
-  <div class="actions">
+    <%= client_fields.text_field :client_name %>
+    </div>
+    <% end %>
+
+
+    <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

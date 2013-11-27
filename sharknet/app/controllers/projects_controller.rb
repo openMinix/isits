@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-	@client_name = params[ :my_project ][ :client_id].to_i
+	  @client_id = params[ :my_project ][ :client_id].to_i
     @projects = Project.where( client_id: @client_id )
   end
 
@@ -71,6 +71,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:project_name, :client_id)
+      params.require(:project).permit(:project_name, :client_id, :client)
     end
 end

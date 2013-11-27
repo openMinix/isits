@@ -6,8 +6,14 @@
 </p>
 
 <p>
-  <strong>Client:</strong>
-  <%= @project.client_id %>
+
+    <strong> Client name:</Strong>
+    <%= fields_for @project.client do |client_fields| %>
+        <div class="field">
+            <%= client_fields.text_field :client_name, :readonly => true %>
+         </div>
+    <% end %>
+
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
