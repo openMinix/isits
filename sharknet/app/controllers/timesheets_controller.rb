@@ -29,6 +29,7 @@ class TimesheetsController < ApplicationController
 
     respond_to do |format|
       if @timesheet.save
+        #For testing sending mail UserMailer.info_email(current_user).deliver
         format.html { redirect_to @timesheet, notice: 'Timesheet was successfully created.' }
         format.json { render action: 'show', status: :created, location: @timesheet }
       else
