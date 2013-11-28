@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-	@client_name = params[ :my_project ][ :client_id].to_i
+	@client_id = params[ :my_project ][ :client_id].to_i
     @projects = Project.where( client_id: @client_id )
   end
 

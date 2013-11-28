@@ -1,6 +1,19 @@
-<h1>Editing project</h1>
+<div id="myform">
 
-<%= render 'form' %>
+<%= form_for(@project) do |f| %>
+	<h1>Editing project</h1>
+
+    <%= f.label :project_name %><br>
+    <%= f.text_field :project_name, :class => 'signin-input' %>
+  
+    <%= f.label :client_id %><br>
+    <%= f.text_field :client_id, :class => 'signin-input' %>
+
+  
+    <%= f.submit "Update project", :class => 'btn btn-primary signin-submit' %>
+
+<% end %>
 
 <%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Back', projects_path(:my_project => { :client_id => @project.client_id }) %>
+</div>
