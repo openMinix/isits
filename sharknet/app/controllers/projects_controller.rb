@@ -4,7 +4,8 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+	@client_name = params[ :my_project ][ :client_id].to_i
+    @projects = Project.where( client_id: @client_id )
   end
 
   # GET /projects/1
@@ -15,6 +16,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+	@project.client_id = params[ :my_project ][ :client_id].to_i
   end
 
   # GET /projects/1/edit

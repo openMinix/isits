@@ -4,6 +4,6 @@
   <strong>Client name:</strong>
   <%= @client.client_name %>
 </p>
-
+<%= link_to 'View projects', projects_path(:my_project => { :client_id => @client.id }) %>
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>

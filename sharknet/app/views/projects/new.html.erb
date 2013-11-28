@@ -1,5 +1,22 @@
-<h1>New project</h1>
+<div id="myform">
+	<%= form_for @project do |f| %>
+		<h1>New project</h1>
+		
+		<%= f.label :project_name %><br>
+		<%= f.text_field :project_name, :class => 'signin-input' %>
+		
+		<%= f.label :client_id %><br>
+		<%= f.text_field :client_id, :input_html => { :value => @project.client_id }, :class => 'signin-input', :readonly => true %>
+		
+		<%= f.submit "Create project", :class => 'btn btn-primary signin-submit' %>
+	<% end %>
+	<%= link_to 'Back', projects_path(:my_project => { :client_id => @project.client_id }) %>
+</div>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', projects_path %>
+
+
+
+
+
+
