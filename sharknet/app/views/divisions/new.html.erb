@@ -1,5 +1,13 @@
-<h1>New division</h1>
+<div id="myform">
+	<%= form_for(@division) do |f| %>
+		<h1>New division</h1>
 
-<%= render 'form' %>
+		<%= f.label :div_name %>
+		<%= f.text_field :div_name, :class => 'signin-input' %>
+	  
+		<%= f.submit "Create division", :class => 'btn btn-primary signin-submit' %>
+	  
+	<% end %>
 
 <%= link_to 'Back', divisions_path %>
+</div>

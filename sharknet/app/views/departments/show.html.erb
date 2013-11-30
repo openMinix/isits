@@ -2,13 +2,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Dept name:</strong>
+  <strong>Department name:</strong>
   <%= @department.dept_name %>
 </p>
 
 <p>
-  <strong>Division:</strong>
-  <%= @department.division_id %>
+  <strong>Division name:</strong>
+	<%= fields_for @department.division do |division_fields| %>
+        <div class="field">
+            <%= division_fields.text_field :div_name, :readonly => true %>
+         </div>
+    <% end %>
 </p>
 
 <%= link_to 'Edit', edit_department_path(@department) %> |

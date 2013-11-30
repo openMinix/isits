@@ -1,15 +1,16 @@
 <div id="myform">
 	<%= form_for @department do |f| %>
 		<h1>New department</h1>
-		
-		
-		<%= f.label :dept_name %><br>
+
+		<%= f.label :dept_name %>
 		<%= f.text_field :dept_name, :class => 'signin-input' %>
 		
+		<%= f.hidden_field :division_id, :input_html => { :value => @department.division_id }, :class => 'signin-input', :readonly => true %>
 		
-		<%= f.label :division_id %><br>
-		<%= f.text_field :division_id, :input_html => { :value => @department.division_id }, :class => 'signin-input', :readonly => true %>
-		
+		<%= fields_for @department.division do |division_fields| %>
+            <%= f.label :division %><br>
+            <%= division_fields.text_field :div_name, :readonly => true %>
+		<% end %>
 		
 		<%= f.submit "Create department", :class => 'btn btn-primary signin-submit' %>
 	<% end %>
