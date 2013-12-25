@@ -10,7 +10,7 @@
 
 <div class='top-right-align'>
 <% if user_signed_in? %>
-<%= "<p class='btn btn-primary'>Bun venit!</p>".html_safe %>
+<%= "<p class='btn btn-primary'>Bun venit #{current_user.user_fullname}! </p>".html_safe %>
 <%= link_to "Sign_out", destroy_user_session_path, :method => :delete, :class => 'btn btn-info'  %>
 <% else %>
 <%= link_to "Sign_in", new_user_session_path, :class => 'btn btn-info' %>
