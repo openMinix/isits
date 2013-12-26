@@ -1,0 +1,27 @@
+<h1>Listing user_jobs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_jobs.each do |user_job| %>
+      <tr>
+        <td><%= user_job.title %></td>
+        <td><%= link_to 'Show', user_job %></td>
+        <td><%= link_to 'Edit', edit_user_job_path(user_job) %></td>
+        <td><%= link_to 'Destroy', user_job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User job', new_user_job_path %>

@@ -1,5 +1,7 @@
 Sharknet::Application.routes.draw do
 
+  resources :user_jobs
+
   resources :departments
 
   resources :divisions

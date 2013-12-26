@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :timesheets
-  belongs_to :department
+  belongs_to :department 
+  belongs_to :user_job
 
   def self.create_timesheets
     User.all.each do |user|

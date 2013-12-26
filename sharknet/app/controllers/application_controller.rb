@@ -13,7 +13,7 @@ def after_sign_in_path_for(resource)
   protected
 
   def configure_devise_permitted_parameters
-    registration_params = [:department_id, :user_fullname, :user_job , :email, :password, :password_confirmation]
+    registration_params = [:department_id, :user_fullname, :user_job_id, :email, :password, :password_confirmation]
 
     if params[:action] == 'update'
       devise_parameter_sanitizer.for(:account_update) { 

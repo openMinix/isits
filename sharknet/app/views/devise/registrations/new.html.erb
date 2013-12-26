@@ -16,8 +16,8 @@
     <%= f.text_field :user_fullname, :class => 'signin-input' %>
     
     <%= f.label :user_job%>
-    <%= f.select :user_job, [ ['ADMINISTRATOR', 'ADMINISTRATOR'], ['EMPLOYEE','EMPLOYEE'], [ 'DEPT_HEAD' , 'DEPT_HEAD'  ], ['DIV_HEAD' , 'DIV_HEAD' ],
-    ['DIRECTOR ' ,'DIRECTOR' ]   ] %>
+
+    <%= collection_select(:user, :user_job_id, UserJob.all, :id, :title) %>
 
     <%= f.label :department_id %>
     <%= grouped_collection_select(:user, :department_id, Division.all, :departments, :div_name, :id, :dept_name) %>

@@ -16,7 +16,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.user_fullname %></td>
-        <td><%= user.user_job %></td>
+        <td><%= user.user_job.title %></td>
       </tr>
     <% end %>
   </tbody>
