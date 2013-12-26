@@ -25,6 +25,7 @@ Sharknet::Application.routes.draw do
     root to: "devise/sessions#new"
 
     get 'memberships/index' => 'memberships#index'
+    match 'users/:id' => 'memberships#destroy', :via => :delete, :as => :admin_destroy_user
   end
 
   # Example of regular route:

@@ -19,7 +19,7 @@
         <td><%= project.client.client_name%></td>
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', delete_project_path(project)%></td>
       </tr>
     <% end %>
   </tbody>
