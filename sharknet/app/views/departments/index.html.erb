@@ -6,6 +6,7 @@
     <tr>
       <th>Department name</th>
       <th>Division name</th>
+      <th>Division head</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,6 +18,11 @@
       <tr>
         <td><%= department.dept_name %></td>
         <td><%= department.division.div_name %></td>
+        <% if department.user == nil %>
+        <td>Nobody assigned</td>
+        <% else %>
+        <td><%= department.user.user_fullname%></td>
+        <% end %>
         <td><%= link_to 'Show', department %></td>
         <td><%= link_to 'Edit', edit_department_path(department) %></td>
         <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>

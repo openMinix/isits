@@ -4,6 +4,14 @@
 <p>
   <strong>Div name:</strong>
   <%= @division.div_name %>
+  <br/>
+  <strong>Division head:</strong>
+  <% if @division.user == nil %>
+    Nobody assigned
+  <% else %>
+    <%= @division.user.user_fullname%>
+  <% end %>
+
 </p>
 
 <%= link_to 'View departments', departments_path(:my_department => { :division_id => @division.id }) %>

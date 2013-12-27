@@ -4,6 +4,13 @@
 <p>
   <strong>Department name:</strong>
   <%= @department.dept_name %>
+  <strong>Department head:<strong>
+  <% if department.user == nil %>
+    Nobody assigned
+  <% else %>
+    <%= department.user.user_fullname%>
+   <% end %>
+
 </p>
 
 <p>

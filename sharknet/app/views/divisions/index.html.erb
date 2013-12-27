@@ -4,7 +4,8 @@
 <table>
   <thead>
     <tr>
-      <th>Div name</th>
+      <th>Division name</th>
+      <th>Division head</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,6 +16,13 @@
     <% @divisions.each do |division| %>
       <tr>
         <td><%= division.div_name %></td>
+
+       <% if division.user == nil %>
+               <td>Nobody assigned</td>
+       <% else %>
+               <td><%= division.user.user_fullname%></td>
+       <% end %>
+
         <td><%= link_to 'Show', division %></td>
         <td><%= link_to 'Edit', edit_division_path(division) %></td>
         <td><%= link_to 'Destroy', division, method: :delete, data: { confirm: 'Are you sure?' } %></td>

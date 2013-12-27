@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131226093711) do
+ActiveRecord::Schema.define(version: 20131227184723) do
 
   create_table "activities", force: true do |t|
     t.string   "type_activity"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20131226093711) do
     t.integer  "division_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "departments", ["division_id"], name: "index_departments_on_division_id"
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 20131226093711) do
     t.string   "div_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "projects", force: true do |t|

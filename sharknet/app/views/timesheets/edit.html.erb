@@ -2,7 +2,13 @@
 	<%= form_for @timesheet do |f| %>
 			<h1>Editing timesheet</h1>
 			<%= f.label :status %>
-			<%= f.select :status, [['OPEN','OPEN'],['SUBMITTED','SUBMITTED'],['APPROVED','APPROVED'],['REJECTED','REJECTED']], :input_html => { :value => @timesheet.status } %>
+
+      <% if current_user.id == @timesheet.user_id %>
+			<%= f.select :status, [['OPEN','OPEN'],['SUBMITTED','SUBMITTED']], :input_html => { :value => @timesheet.status } %>
+      <% else %>
+	<%= f.select :status, [['SUBMITTED','SUBMITTED'],['APPROVED','APPROVED'],['REJECTED','REJECTED']], :input_html => { :value => @timesheet.status } %>
+
+      <% end %>
 			
 			<%= f.label :period %>
 			<%= f.date_select "period", :start_year => 2008,
