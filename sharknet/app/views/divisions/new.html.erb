@@ -8,7 +8,6 @@
     <%= f.label :division_head%> <br>
     <%= collection_select(:division, :user_id, User.all, :id, :user_fullname) %>
 
-	  
 		<%= f.submit "Create division", :class => 'btn btn-primary signin-submit' %>
 	  
 	<% end %>

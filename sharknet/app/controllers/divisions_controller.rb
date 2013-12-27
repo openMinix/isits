@@ -1,6 +1,7 @@
 class DivisionsController < ApplicationController
   before_action :set_division, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+
+  load_and_authorize_resource :user, :parent => false 
 
   # GET /divisions
   # GET /divisions.json
@@ -29,6 +30,10 @@ class DivisionsController < ApplicationController
 	
     respond_to do |format|
       if @division.save
+        @userM = User.find(@division.user.id) 
+        @userM.user_job_id = UserJob.where(title: 'SEF DIVIZIE').take.id
+        @userM.save
+
         format.html { redirect_to @division, notice: 'Division was successfully created.' }
         format.json { render action: 'show', status: :created, location: @division }
       else
@@ -43,6 +48,10 @@ class DivisionsController < ApplicationController
   def update
     respond_to do |format|
       if @division.update(division_params)
+        @userM = User.find(@division.user.id) 
+        @userM.user_job_id = UserJob.where(title: 'SEF DIVIZIE').take.id
+        @userM.save
+
         format.html { redirect_to @division, notice: 'Division was successfully updated.' }
         format.json { head :no_content }
       else
@@ -70,6 +79,6 @@ class DivisionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def division_params
-      params.require(:division).permit(:div_name)
+      params.require(:division).permit(:div_name, :user_id)
     end
 end

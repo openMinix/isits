@@ -1,5 +1,6 @@
 class DepartmentsController < ApplicationController
   before_action :set_department, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :user, :parent => false  
 
   # GET /departments
   # GET /departments.json
@@ -16,7 +17,7 @@ class DepartmentsController < ApplicationController
   # GET /departments/new
   def new
     @department = Department.new
-	@department.division_id = params[ :my_department ][ :division_id].to_i
+	  @department.division_id = params[ :my_department ][ :division_id].to_i
   end
 
   # GET /departments/1/edit
@@ -30,6 +31,10 @@ class DepartmentsController < ApplicationController
 
     respond_to do |format|
       if @department.save
+        @userM = User.find(@department.user.id) 
+        @userM.user_job_id = UserJob.where(title: 'SEF DEPARTAMENT').take.id
+        @userM.save
+
         format.html { redirect_to @department, notice: 'Department was successfully created.' }
         format.json { render action: 'show', status: :created, location: @department }
       else
@@ -44,6 +49,9 @@ class DepartmentsController < ApplicationController
   def update
     respond_to do |format|
       if @department.update(department_params)
+        @userM = User.find(@department.user.id) 
+        @userM.user_job_id = UserJob.where(title: 'SEF DEPARTAMENT').take.id
+        @userM.save
         format.html { redirect_to @department, notice: 'Department was successfully updated.' }
         format.json { head :no_content }
       else
@@ -56,9 +64,11 @@ class DepartmentsController < ApplicationController
   # DELETE /departments/1
   # DELETE /departments/1.json
   def destroy
+    div_id =@department.division_id
     @department.destroy
     respond_to do |format|
-      format.html { redirect_to departments_url }
+    #departments_path(:my_department => { :division_id => @department.division_id })
+      format.html { redirect_to departments_path(:my_department => { :division_id => div_id})}
       format.json { head :no_content }
     end
   end
@@ -71,6 +81,6 @@ class DepartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def department_params
-      params.require(:department).permit(:dept_name, :division_id)
+      params.require(:department).permit(:dept_name, :division_id, :user_id)
     end
 end
