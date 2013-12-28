@@ -22,6 +22,20 @@
 <% else %>
 <%= link_to "Sign_in", new_user_session_path, :class => 'btn btn-info' %>
 <% end %>
+<br>
+
+<% if current_user != nil %>
+<%= link_to "View timesheets", timesheets_path, :class => 'btn btn-success' %>
+<% end %>
+<br>
+
+<% if current_user == nil %>
+ <br>
+<% elsif current_user.user_job.title == "SEF DIVIZIE" %>
+  <%= link_to "View division timesheets", timesheets_divisions_path, :class => 'btn btn-success' %>
+<%elsif current_user.user_job.title == "SEF DEPARTAMENT" %>
+  <%= link_to "View department timesheets", timesheets_departments_path, :class => 'btn btn-success' %>
+<% end %>
 </div>
 
 

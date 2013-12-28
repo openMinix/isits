@@ -1,0 +1,31 @@
+<div id="myform" class="listing-table">
+<h1>Listing timesheets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Period</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timesheets.each do |timesheet| %>
+      <tr>
+        <td><%= timesheet.status %></td>
+        <td><%= timesheet.period %></td>
+        <td><%= timesheet.user.user_fullname%></td>
+        <td><%= link_to 'Show', timesheet %></td>
+        <td><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+</div>

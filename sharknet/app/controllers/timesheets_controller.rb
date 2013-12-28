@@ -7,6 +7,24 @@ class TimesheetsController < ApplicationController
     @timesheets = current_user.timesheets 
   end
 
+  def departments_index 
+    @timesheets = Timesheet.joins(:user).where('users.department_id' => current_user.department_id )
+    render 'timesheets/department_index'
+  end
+
+  def divisions_index 
+    #@timesheets = Timesheet.joins(user: d).where('users.department_id' => current_user.department_id )
+    @timesheets = Timesheet.all
+
+    @timesheets.find_all do |timesheet|
+      timesheet.user.department.division.id == current_user.department.division.id
+    end
+
+    render 'timesheets/division_index'
+  end
+
+
+
   # GET /timesheets/1
   # GET /timesheets/1.json
   def show

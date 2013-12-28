@@ -14,7 +14,9 @@ Sharknet::Application.routes.draw do
 
   resources :sheetfiles
 
-  resources :timesheets
+
+  get 'timesheets/divisions' => 'timesheets#divisions_index', :as => :timesheets_divisions
+  get 'timesheets/departments' => 'timesheets#departments_index', :as => :timesheets_departments
 
   devise_for :users , :controllers => { :registrations => 'memberships' } 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -22,6 +24,8 @@ Sharknet::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   devise_scope :user do
+  resources :timesheets
+
     root to: "devise/sessions#new"
 
     get 'memberships/index' => 'memberships#index'
