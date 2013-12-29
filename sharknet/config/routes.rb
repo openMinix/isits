@@ -17,6 +17,7 @@ Sharknet::Application.routes.draw do
 
   get 'timesheets/divisions' => 'timesheets#divisions_index', :as => :timesheets_divisions
   get 'timesheets/departments' => 'timesheets#departments_index', :as => :timesheets_departments
+  get 'timesheets/director' => 'timesheets#director_index', :as => :timesheets_director
 
   devise_for :users , :controllers => { :registrations => 'memberships' } 
   # The priority is based upon order of creation: first created -> highest priority.

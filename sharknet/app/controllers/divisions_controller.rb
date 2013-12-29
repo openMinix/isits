@@ -1,7 +1,7 @@
 class DivisionsController < ApplicationController
   before_action :set_division, only: [:show, :edit, :update, :destroy]
 
-  load_and_authorize_resource :user, :parent => false 
+  load_and_authorize_resource :user, :parent => false, :only =>[:index]
 
   # GET /divisions
   # GET /divisions.json

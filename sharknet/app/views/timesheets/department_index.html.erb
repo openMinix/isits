@@ -1,5 +1,5 @@
 <div id="myform" class="listing-table">
-<h1>Listing timesheets</h1>
+<h1>Listing timesheets for department <%= current_user.department.dept_name %></h1>
 
 <table>
   <thead>
@@ -20,7 +20,11 @@
         <td><%= timesheet.period %></td>
         <td><%= timesheet.user.user_fullname%></td>
         <td><%= link_to 'Show', timesheet %></td>
+        <% if timesheet.status != 'APPROVED' %>
         <td><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
+        <% else %>
+        <td>Non-editable</td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

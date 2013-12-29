@@ -12,6 +12,8 @@
 <% if current_user != nil and current_user.user_job.title == 'ADMINISTRATOR' %>
   <%=     link_to "Manage users", memberships_index_path, :class => 'btn btn-warning'  %>
   <%=     link_to "Manage divisions", divisions_path, :class => 'btn btn-warning'  %>
+  <%elsif current_user.user_job.title == 'SEF DEPARTAMENT' %>
+    <%=     link_to "Manage clients", clients_path, :class => 'btn btn-warning'  %>
 <%  end %>
 </div>
 
@@ -35,6 +37,8 @@
   <%= link_to "View division timesheets", timesheets_divisions_path, :class => 'btn btn-success' %>
 <%elsif current_user.user_job.title == "SEF DEPARTAMENT" %>
   <%= link_to "View department timesheets", timesheets_departments_path, :class => 'btn btn-success' %>
+<%elsif current_user.user_job.title == "DIRECTOR" %>
+  <%= link_to "View company timesheets", timesheets_director_path, :class => 'btn btn-success' %>
 <% end %>
 </div>
 

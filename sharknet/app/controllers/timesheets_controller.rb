@@ -8,19 +8,25 @@ class TimesheetsController < ApplicationController
   end
 
   def departments_index 
-    @timesheets = Timesheet.joins(:user).where('users.department_id' => current_user.department_id )
+    @timesheets = Timesheet.joins(:user).where('users.department_id' => current_user.department_id ).where(status:  'SUBMITTED')
     render 'timesheets/department_index'
   end
 
   def divisions_index 
-    #@timesheets = Timesheet.joins(user: d).where('users.department_id' => current_user.department_id )
     @timesheets = Timesheet.all
 
     @timesheets.find_all do |timesheet|
-      timesheet.user.department.division.id == current_user.department.division.id
+      timesheet.user.department.division.id == current_user.department.division.id 
     end
 
     render 'timesheets/division_index'
+  end
+
+  def director_index
+    @timesheets = Timesheet.all
+
+    render 'timesheets/director_index'
+ 
   end
 
 
@@ -62,6 +68,11 @@ class TimesheetsController < ApplicationController
   def update
     respond_to do |format|
       if @timesheet.update(timesheet_params)
+          if @timesheet.user.user_job.title != 'ANGAJAT' and @timesheet.user.user_job.title != 'ADMINISTRATOR'
+              @timesheet.status  = 'APPROVED'
+              @timesheet.save
+          end
+
         format.html { redirect_to @timesheet, notice: 'Timesheet was successfully updated.' }
         format.json { head :no_content }
       else

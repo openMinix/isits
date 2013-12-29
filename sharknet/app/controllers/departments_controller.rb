@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
   before_action :set_department, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource :user, :parent => false  
+  load_and_authorize_resource :user, :parent => false, :only => [:index]  
 
   # GET /departments
   # GET /departments.json
