@@ -19,6 +19,28 @@ Sharknet::Application.routes.draw do
   get 'activities/director_result' => 'activities#director_result', :as => :activities_dirresults
 
 
+  get 'activities/divisions_project' => 'activities#divisions_project_search', :as => :activities_divisions_project
+  get 'activities/departments_project' => 'activities#departments_project_search', :as => :activities_departments_project
+  get 'activities/director_project' => 'activities#director_project_search', :as => :activities_director_project
+
+  get 'activities/divisions_project_result' => 'activities#divisions_project_result', :as => :activities_divresults_project
+  get 'activities/departments_project_result' => 'activities#departments_project_result', :as => :activities_depresults_project
+  get 'activities/director_project_result' => 'activities#director_project_result', :as => :activities_dirresults_project
+
+
+  get 'activities/divisions_period' => 'activities#divisions_period_search', :as => :activities_divisions_period
+  get 'activities/departments_period' => 'activities#departments_period_search', :as => :activities_departments_period
+  get 'activities/director_period' => 'activities#director_period_search', :as => :activities_director_period
+
+  get 'activities/divisions_period_result' => 'activities#divisions_period_result', :as => :activities_divresults_period
+  get 'activities/departments_period_result' => 'activities#departments_period_result', :as => :activities_depresults_period
+  get 'activities/director_period_result' => 'activities#director_period_result', :as => :activities_dirresults_period
+
+
+
+
+
+
   resources :activities
 
   resources :sheetfiles
