@@ -4,18 +4,23 @@
 		
 		<%= f.label :sheetfile_id %>
 		<%= f.text_field :sheetfile_id, :class => 'signin-input', :readonly => true %>
-		
-		<%= f.label :type_activity %>
+
+				<%= f.label :type_activity %>
 		<%= f.text_field :type_activity, :class => 'signin-input' %>
-		
+
 		<%= f.label :description %>
 		<%= f.text_field :description, :class => 'signin-input' %>
-		
+		<%= f.label :project_id %> 
+    <span class ="signin-input">
+    <%= grouped_collection_select(:activity, :project_id, Client.all, :projects, :client_name, :id, :project_name)%>
+   </span>
+
 		<%= f.label :work_hours %>
 		<%= f.number_field :work_hours, :class => 'signin-input' %>
 		
 		<%= f.label :extra %>
 		<%= f.check_box :extra, :class => 'signin-checkbox' %>
+
 
 		<%= f.submit "Create sheetfile", :class => 'btn btn-primary signin-submit' %>
 	<% end %>

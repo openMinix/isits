@@ -8,6 +8,8 @@
       <th>Description</th>
       <th>Work hours</th>
       <th>Extra</th>
+      <th>Client</th>
+      <th>Project</th>
       <th></th>
       <th></th>
       <th></th>
@@ -21,6 +23,8 @@
         <td><%= activity.description %></td>
         <td><%= activity.work_hours %></td>
         <td><%= activity.extra %></td>
+        <td><%= activity.project.client.client_name%></td>
+        <td><%= activity.project.project_name %></td>
         <td><%= link_to 'Show', activity %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>

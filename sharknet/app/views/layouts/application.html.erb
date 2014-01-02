@@ -12,8 +12,8 @@
 <% if current_user != nil and current_user.user_job.title == 'ADMINISTRATOR' %>
   <%=     link_to "Manage users", memberships_index_path, :class => 'btn btn-warning'  %>
   <%=     link_to "Manage divisions", divisions_path, :class => 'btn btn-warning'  %>
-  <%elsif current_user.user_job.title == 'SEF DEPARTAMENT' %>
-    <%=     link_to "Manage clients", clients_path, :class => 'btn btn-warning'  %>
+  <%elsif current_user != nil and current_user.user_job.title == 'SEF DEPARTAMENT' %>
+  <%=     link_to "Manage clients", clients_path, :class => 'btn btn-warning'  %>
 <%  end %>
 </div>
 
