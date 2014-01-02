@@ -10,6 +10,15 @@ Sharknet::Application.routes.draw do
 
   resources :clients
 
+  get 'activities/divisions' => 'activities#divisions_search', :as => :activities_divisions
+  get 'activities/departments' => 'activities#departments_search', :as => :activities_departments
+  get 'activities/director' => 'activities#director_search', :as => :activities_director
+
+  get 'activities/divisions_result' => 'activities#divisions_result', :as => :activities_divresults
+  get 'activities/departments_result' => 'activities#departments_result', :as => :activities_depresults
+  get 'activities/director_result' => 'activities#director_result', :as => :activities_dirresults
+
+
   resources :activities
 
   resources :sheetfiles

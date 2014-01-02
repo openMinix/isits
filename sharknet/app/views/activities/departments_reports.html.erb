@@ -1,0 +1,32 @@
+<div id="myform" class="listing-table">
+<h1>Report listings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Client name </th>
+      <th>Project name</th>
+      <th>Hours worked</th>
+      <th>Extra hours</th>
+      <th>Percentage</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @user_activities.each do |activity| %>
+      <tr>
+        <td><%= activity.project.client.client_name%></td>
+        <td><%= activity.project.project_name%></td>
+        <td><%= activity.hoursw%></td>
+        <td><%= activity.extrah%></td>
+        <td><%= (activity.hoursw/@total_hours.to_f )* 100%> %</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+</div>

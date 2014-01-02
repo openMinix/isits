@@ -35,10 +35,19 @@
  <br>
 <% elsif current_user.user_job.title == "SEF DIVIZIE" %>
   <%= link_to "View division timesheets", timesheets_divisions_path, :class => 'btn btn-success' %>
+  <%= link_to "View user reports", activities_divisions_path, :class => 'btn btn-success' %>
+  <%= link_to "View project reports", activities_divisions_project_path, :class => 'btn btn-success' %>
+  <%= link_to "View period reports", activities_divisions_period_path, :class => 'btn btn-success' %>
+
 <%elsif current_user.user_job.title == "SEF DEPARTAMENT" %>
   <%= link_to "View department timesheets", timesheets_departments_path, :class => 'btn btn-success' %>
+  <%= link_to "View user reports", activities_departments_path, :class => 'btn btn-success' %>
+  <%= link_to "View project reports", activities_departments_project_path, :class => 'btn btn-success' %>
+  <%= link_to "View period reports", activities_departments_period_path, :class => 'btn btn-success' %>
+
 <%elsif current_user.user_job.title == "DIRECTOR" %>
   <%= link_to "View company timesheets", timesheets_director_path, :class => 'btn btn-success' %>
+  <%= link_to "View user reports", activities_departments_path, :class => 'btn btn-success' %>
 <% end %>
 </div>
 

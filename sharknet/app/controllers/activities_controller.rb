@@ -24,6 +24,28 @@ class ActivitiesController < ApplicationController
   def edit
   end
 
+  def departments_search
+      render 'activities/departments_search'
+  end
+
+  def departments_result
+
+      date_created_start = Date.civil(params[:created_at][:year].to_i, params[:created_at][:month].to_i, params[:created_at][:day].to_i)
+
+      date_created_end = Date.civil(params[:created_at_end][:year].to_i, params[:created_at_end][:month].to_i, params[:created_at_end][:day].to_i)
+
+      @user_activities = Activity.joins(:sheetfile=> [{:timesheet=> :user}])
+      .where('users.id'=> params[:id]).where('activities.created_at' => date_created_start.midnight..(date_created_end.midnight + 1.day) )
+      .select('sum(activities.work_hours) as hoursw, sum( CASE activities.extra WHEN "true" THEN activities.work_hours ELSE 0 END) as extrah , activities.project_id ').group('activities.project_id')
+
+      @total_hours= Activity.joins(:sheetfile=> [{:timesheet=> :user}])
+      .where('users.id'=> params[:id]).where('activities.created_at' => date_created_start.midnight..(date_created_end.midnight + 1.day) )
+      .select('sum(activities.work_hours) as totalh' ).take.totalh
+
+
+      render 'activities/departments_reports'
+  end
+
   # POST /activities
   # POST /activities.json
   def create

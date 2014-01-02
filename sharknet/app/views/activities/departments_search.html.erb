@@ -1,0 +1,19 @@
+<h1>New reports</h1>
+
+<%= form_tag(activities_depresults_path, method: "get" ) do %>
+  <%= label_tag(:id, "User ID:") %>
+  <%= text_field_tag(:id) %>
+
+  <br>
+  <%= label_tag(:recorddate, "Activities start date:") %>
+  <%= select_date Date.today, prefix: :created_at%>
+
+
+  <%= label_tag(:recorddate, "Activities end date:") %>
+  <%= select_date Date.today, prefix: :created_at_end%>
+  <br>
+
+  <%= submit_tag("Generate") %>
+<% end %>
+
+~                                     

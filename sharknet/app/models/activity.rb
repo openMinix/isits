@@ -1,4 +1,4 @@
 class Activity < ActiveRecord::Base
-	belongs_to :sheetfiles
+	belongs_to :sheetfile
   belongs_to :project
 end
