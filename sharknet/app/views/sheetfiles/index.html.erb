@@ -1,29 +1,33 @@
-<div id="myform" class="listing-table">
-<h1>Listing sheetfiles</h1>
+<div class="content">
+	<blockquote>
+		<p>Listing sheetfiles</p>
+	</blockquote>
+	
+	<div class="table-responsive">	
+		<table class="table table-striped table-bordered table-hover table-condensed">
+			  <thead>
+				<tr>
+				  <th>Day</th>
+				  <th colspan="3">Actions</th>
+				</tr>
+			  </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Day</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+			  <tbody>
+				<% @sheetfiles.each do |sheetfile| %>
+				  <tr>
+					<td><%= sheetfile.day %></td>
+					<td><i class="fa fa-folder-open-o pr10"></i><%= link_to 'Show', sheetfile %></td>
+					<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit', edit_sheetfile_path(sheetfile) %></td>
+					<td><i class="fa fa-ban pr10"></i><%= link_to 'Destroy', sheetfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				  </tr>
+				<% end %>
+			  </tbody>
+		</table>
+	</div>
 
-  <tbody>
-    <% @sheetfiles.each do |sheetfile| %>
-      <tr>
-        <td><%= sheetfile.day %></td>
-        <td><%= link_to 'Show', sheetfile %></td>
-        <td><%= link_to 'Edit', edit_sheetfile_path(sheetfile) %></td>
-        <td><%= link_to 'Destroy', sheetfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<button type="button" class="btn btn-success">
+	<i class="fa fa-plus-circle"></i>
+	<%= link_to 'Add sheetfile', new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet_id }) %>
+</button>
 
-<br>
-
-<%= link_to 'Add sheetfile', new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet_id }) %>
 </div>

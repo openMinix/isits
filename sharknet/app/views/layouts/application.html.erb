@@ -8,49 +8,55 @@
 </head>
 <body>
 
-<div class='top-left-align'>
-<% if current_user != nil and current_user.user_job.title == 'ADMINISTRATOR' %>
-  <%=     link_to "Manage users", memberships_index_path, :class => 'btn btn-warning'  %>
-  <%=     link_to "Manage divisions", divisions_path, :class => 'btn btn-warning'  %>
-  <%elsif current_user != nil and current_user.user_job.title == 'SEF DEPARTAMENT' %>
-  <%=     link_to "Manage clients", clients_path, :class => 'btn btn-warning'  %>
-<%  end %>
+<div class="container">
+	<% if user_signed_in? %>
+			<div class="jumbotron">
+				<h2>Welcome<br><small>Sharknetors team</small></br></h2>
+				<p class="navbar-text navbar-right">
+					<button class="btn btn-primary btn-sm"><i class="fa fa-sign-in pr10"></i>Signed in as <b><%= "#{current_user.user_fullname}" %></b></button>
+					
+					<button class="btn btn-danger btn-sm"><i class="fa fa-sign-out pr10"></i><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></button>
+				</p>
+			</div>
+	<% else %>
+			<div class="jumbotron">
+				<h2>The<br><small>Sharknetors team</small></br></h2>
+				<p class="navbar-text navbar-right">
+					<button class="btn btn-primary btn-sm"><i class="fa fa-sign-in pr10"></i><%= link_to "Sign in", new_user_session_path %></button>
+				</p>
+			</div>
+	<% end %>
+
+	<ul class="nav nav-pills">
+		<% if current_user != nil %>
+			<li><%= link_to "View timesheets", timesheets_path, :class => 'btn btn-default btn-sm' %></li>
+		<% end %>
+		<% if current_user != nil and current_user.user_job.title == 'ADMINISTRATOR' %>
+			<li><%= link_to "Manage users", memberships_index_path, :class => 'btn btn-default btn-sm'  %></li>
+			<li><%= link_to "Manage divisions", divisions_path, :class => 'btn btn-default btn-sm'  %></li>
+		<%elsif current_user != nil and current_user.user_job.title == 'SEF DEPARTAMENT' %>
+			<li><%= link_to "Manage clients", clients_path, :class => 'btn btn-default btn-sm'  %></li>
+		<%  end %>
+		
+		<% if current_user == nil %>
+		<% elsif current_user.user_job.title == "SEF DIVIZIE" %>
+			<li><%= link_to "View division timesheets", timesheets_divisions_path, :class => 'btn btn-default btn-sm' %></li>
+			<li><%= link_to "View user reports", activities_divisions_path, :class => 'btn btn-default btn-sm' %></li>
+			<li><%= link_to "View project reports", activities_divisions_project_path, :class => 'btn btn-default btn-sm' %></li>
+			<li><%= link_to "View period reports", activities_divisions_period_path, :class => 'btn btn-default btn-sm' %></li>
+
+		<%elsif current_user.user_job.title == "SEF DEPARTAMENT" %>
+			<li><%= link_to "View department timesheets", timesheets_departments_path, :class => 'btn btn-default btn-sm' %></li>
+			<li><%= link_to "View user reports", activities_departments_path, :class => 'btn btn-default btn-sm' %></li>
+			<li><%= link_to "View project reports", activities_departments_project_path, :class => 'btn btn-default btn-sm' %></li>
+			<li><%= link_to "View period reports", activities_departments_period_path, :class => 'btn btn-default btn-sm' %></li>
+
+		<%elsif current_user.user_job.title == "DIRECTOR" %>
+			<li><%= link_to "View company timesheets", timesheets_director_path, :class => 'btn btn-default btn-sm' %></li>
+			<li><%= link_to "View user reports", activities_departments_path, :class => 'btn btn-default btn-sm' %></li>
+		<% end %>
+	</ul>
 </div>
-
-<div class='top-right-align'>
-<% if user_signed_in? %>
-<%= "<p class='btn btn-primary'>Bun venit #{current_user.user_fullname}! </p>".html_safe %>
-<%= link_to "Sign_out", destroy_user_session_path, :method => :delete, :class => 'btn btn-info'  %>
-<% else %>
-<%= link_to "Sign_in", new_user_session_path, :class => 'btn btn-info' %>
-<% end %>
-<br>
-
-<% if current_user != nil %>
-<%= link_to "View timesheets", timesheets_path, :class => 'btn btn-success' %>
-<% end %>
-<br>
-
-<% if current_user == nil %>
- <br>
-<% elsif current_user.user_job.title == "SEF DIVIZIE" %>
-  <%= link_to "View division timesheets", timesheets_divisions_path, :class => 'btn btn-success' %>
-  <%= link_to "View user reports", activities_divisions_path, :class => 'btn btn-success' %>
-  <%= link_to "View project reports", activities_divisions_project_path, :class => 'btn btn-success' %>
-  <%= link_to "View period reports", activities_divisions_period_path, :class => 'btn btn-success' %>
-
-<%elsif current_user.user_job.title == "SEF DEPARTAMENT" %>
-  <%= link_to "View department timesheets", timesheets_departments_path, :class => 'btn btn-success' %>
-  <%= link_to "View user reports", activities_departments_path, :class => 'btn btn-success' %>
-  <%= link_to "View project reports", activities_departments_project_path, :class => 'btn btn-success' %>
-  <%= link_to "View period reports", activities_departments_period_path, :class => 'btn btn-success' %>
-
-<%elsif current_user.user_job.title == "DIRECTOR" %>
-  <%= link_to "View company timesheets", timesheets_director_path, :class => 'btn btn-success' %>
-  <%= link_to "View user reports", activities_departments_path, :class => 'btn btn-success' %>
-<% end %>
-</div>
-
 
 <%= yield %>
 

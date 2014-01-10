@@ -1,18 +1,23 @@
-<div id="myform">
-	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-			<h1>Sign in</h1>
+<div class="content">
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {role: "form",class: "content-center"})  do |f| %>
+		<blockquote>
+			<p>Sign in</p>
+		</blockquote>	
+		<div class="form-group">
 			<%= f.label :email %>
-			<%= f.email_field :email, :autofocus => true, :class => 'signin-input' %>
-
+			<%= f.email_field :email, :autofocus => true, :class => 'form-control' %>
+		</div>
+		<div class="form-group">
 			<%= f.label :password %>
-			<%= f.password_field :password, :class => 'signin-input' %>
-
+			<%= f.password_field :password, :class => 'form-control' %>
+		</div>
+		<div class="form-group">
 			<% if devise_mapping.rememberable? -%>
 				<%= f.label :remember_me %>
 				<%= f.check_box :remember_me, :class => 'signin-checkbox' %>
 			<% end -%>
-
-			<%= f.submit "Sign in", :class => 'btn btn-primary signin-submit' %>
+		</div>
+		<button class="btn btn-success btn-sm"><i class="fa fa-sign-in pr10"></i><%= f.submit "Sign in", :class => 'btn btn-success no-border' %></button>
 	<% end %>
 	<%= render "devise/shared/links" %>
 </div> 

@@ -1,27 +1,32 @@
-<div id="myform">
-	<%= form_for @timesheet do |f| %>
-			<h1>Editing timesheet</h1>
-			<%= f.label :status %>
-
-      <% if current_user.id == @timesheet.user_id %>
-			<%= f.select :status, [['OPEN','OPEN'],['SUBMITTED','SUBMITTED']], :input_html => { :value => @timesheet.status } %>
-      <% else %>
-	<%= f.select :status, [['SUBMITTED','SUBMITTED'],['APPROVED','APPROVED'],['REJECTED','REJECTED']], :input_html => { :value => @timesheet.status } %>
-
-      <% end %>
-			
+<div class="content">
+	<%= form_for @timesheet, html: {role: "form",class: "content-center"} do |f| %>
+			<blockquote>
+				<p>Edit timesheet no# <%= @timesheet.id %></p>
+			</blockquote>
+			<div class="form-group">		
+				<%= f.label :status %>
+				<% if current_user.id == @timesheet.user_id %>
+					<%= f.select(:status, [['OPEN','OPEN'],['SUBMITTED','SUBMITTED'],['APPROVED','APPROVED'],['REJECTED','REJECTED']], { :input_html => { :value => @timesheet.status }}, { :class => 'form-control' }) %>
+				<% else %>
+					<%= f.select(:status, [['OPEN','OPEN'],['SUBMITTED','SUBMITTED'],['APPROVED','APPROVED'],['REJECTED','REJECTED']], { :input_html => { :value => @timesheet.status }}, { :class => 'form-control' }) %>	
+				<% end %>
+			</div>
+			<div class="form-group">
 			<%= f.label :period %>
-			<%= f.date_select "period", :start_year => 2008,
+			
+			<%= f.date_select "period", {:start_year => 2008,
                                :use_month_numbers => false,
                                :discard_day => false,
-                               :order => [:year, :month, :day], :input_html => { :value => @timesheet.period } %>
+                               :order => [:year, :month, :day]}, {:value => @timesheet.period, :class => 'form-control' } %>
+			</div>				   
 
-			<%= f.submit "Update timesheet", :class => 'btn btn-primary signin-submit' %>
+			<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Update timesheet", :class => 'btn btn-success no-border' %></button>
 	<% end %>
-	<%= link_to 'Add sheetfile', new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet.id }) %>
-
-	<%= link_to 'Show', @timesheet %> |
-	<%= link_to 'Back', timesheets_path %>
+	<button class="btn btn-info"><i class="fa fa-plus-circle pr10"></i><%= link_to 'Add sheetfile to timesheet', new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet.id }) %></button>
+	<br><br>
+	<button class="btn btn-info"><i class="fa fa-files-o pr10"></i><%= link_to 'Show timesheet', @timesheet %></button>
+	<br><br>
+	<button class="btn btn-primary btn-sm"><%= link_to 'Back', timesheets_path %></button>
 </div>	
 
 

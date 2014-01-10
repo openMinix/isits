@@ -55,3 +55,6 @@ end
 
 #Railroad for class diagram generator
 #gem 'railroad'
+
+#font-awesome
+gem "font-awesome-rails"
