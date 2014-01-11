@@ -1,35 +1,33 @@
-<div id="myform" class="listing-table">
-<h1>Listing timesheets for department <%= current_user.department.dept_name %></h1>
+<div class="content">
+	<blockquote>
+		<p>Listing timesheets for department <%= current_user.department.dept_name %></p>
+	</blockquote>
+	<div class="table-responsive">
+		<table class="table table-striped table-bordered table-hover table-condensed">
+		  <thead>
+			<tr>
+			  <th>Status</th>
+			  <th>Period</th>
+			  <th>User</th>
+			  <th colspan="2">Actions</th>
+			</tr>
+		  </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Status</th>
-      <th>Period</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @timesheets.each do |timesheet| %>
-      <tr>
-        <td><%= timesheet.status %></td>
-        <td><%= timesheet.period %></td>
-        <td><%= timesheet.user.user_fullname%></td>
-        <td><%= link_to 'Show', timesheet %></td>
-        <% if timesheet.status != 'APPROVED' %>
-        <td><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
-        <% else %>
-        <td>Non-editable</td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+		  <tbody>
+			<% @timesheets.each do |timesheet| %>
+			  <tr>
+				<td><%= timesheet.status %></td>
+				<td><%= timesheet.period %></td>
+				<td><%= timesheet.user.user_fullname%></td>
+				<td><i class="fa fa-folder-open-o pr10"></i><%= link_to 'Show', timesheet %></td>
+				<% if timesheet.status != 'APPROVED' %>
+				<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
+				<% else %>
+				<td>Non-editable</td>
+				<% end %>
+			  </tr>
+			<% end %>
+		  </tbody>
+		</table>
+	</div>
 </div>

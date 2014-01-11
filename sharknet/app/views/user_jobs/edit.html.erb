@@ -1,6 +1,32 @@
-<h1>Editing user_job</h1>
+<div class="content">	
+	
+	<%= form_for @user_job, html: {role: "form",class: "content-center"} do |f| %>
+		<blockquote>
+			<p>Editing user job</p>
+		</blockquote>
+	
+		  <% if @user_job.errors.any? %>
+			<div id="error_explanation">
+			  <h2><%= pluralize(@user_job.errors.count, "error") %> prohibited this user_job from being saved:</h2>
 
-<%= render 'form' %>
+			  <ul>
+			  <% @user_job.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			  <% end %>
+			  </ul>
+			</div>
+		  <% end %>
 
-<%= link_to 'Show', @user_job %> |
-<%= link_to 'Back', user_jobs_path %>
+		  <div class="form-group">
+			<%= f.label :title %><br>
+			<%= f.text_field :title, :class => 'form-control' %>
+		  </div>
+			<%= f.submit %>
+	<% end %>
+
+	<%= link_to(raw(("<i class='fa fa-files-o pr10'></i>") + "Show user job"), @user_job, :class => "btn btn-info") %>
+	<br><br>
+	
+	<%= link_to(raw(("<i class='fa fa-reply pr10'></i>") + "Back"), user_jobs_path, :class => "btn btn-primary btn-sm") %>	
+
+</div>

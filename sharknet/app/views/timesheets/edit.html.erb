@@ -20,7 +20,10 @@
                                :order => [:year, :month, :day]}, {:value => @timesheet.period, :class => 'form-control' } %>
 			</div>				   
 
-			<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Update timesheet", :class => 'btn btn-success no-border' %></button>
+			<%= button_tag(type: 'submit', class: "btn btn-success") do %>
+				<i class="fa fa-file-text-o"></i> Update timesheet
+			<% end %>
+			
 	<% end %>
 	
 	<%= link_to(raw(("<i class='fa fa-plus-circle pr10'></i>") + "Add sheetfile to timesheet"), new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet.id }), :class => "btn btn-info") %>
