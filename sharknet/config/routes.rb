@@ -1,5 +1,7 @@
 Sharknet::Application.routes.draw do
 
+  get "webservices/showwork"
+  get "webservices/showvacation"
   resources :user_jobs
 
   resources :departments
