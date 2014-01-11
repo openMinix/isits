@@ -19,7 +19,7 @@
 				<td><%= user.user_fullname %></td>
 				<td><%= user.email %> </td>
 				<td><%= user.user_job.title %></td>
-				<td><i class="fa fa-pencil pr10"></i><%= link_to "Edit",edit_user_registration_path(user) %></td>
+				<td><i class="fa fa-pencil pr10"></i><%= link_to "Edit",memberships_edit_path(user) %></td>
 				<td><i class="fa fa-ban pr10"></i><%= link_to "Destroy", admin_destroy_user_path(user), method: :delete, data: { confirm: "You sure?" } %></td>			
 			  </tr>
 			<% end %>
