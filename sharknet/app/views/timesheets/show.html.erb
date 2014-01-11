@@ -1,6 +1,7 @@
 <div class="content">
+<% if(notice) %>
 <p id="notice"><%= notice %></p>
-
+<% end %>
 
 <blockquote>
 	<p>Timesheet no# <%= @timesheet.id %></p>
@@ -27,6 +28,6 @@
 </table>
 </div>
 
+<%= link_to(raw(("<i class='fa fa-reply pr10'></i>") + "Back"), timesheets_path, :class => "btn btn-primary btn-sm") %>	
 
-<button class="btn btn-primary btn-sm"><%= link_to 'Back', timesheets_path %></button>
 </div>

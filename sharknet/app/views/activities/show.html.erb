@@ -1,26 +1,36 @@
-<div id="myform">
-<p id="notice"><%= notice %></p>
+<div class="content">
+	<% if(notice) %>
+	<p id="notice"><%= notice %></p>
+	<% end %>
+	
+	<blockquote>
+		<p>Activity no# <%= @activity.id %></p>
+	</blockquote>	
+	
+	<div class="table-responsive">
+		<table class="table table-striped table-bordered table-hover table-condensed">
+			<thead>
+				<tr>
+				  <th>Type of activity</th>
+				  <th>Description</th>
+				  <th>Work hours</th>
+				  <th>Extra</th>
+				  <th>Action</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr>
+					<td><%= @activity.type_activity %></td>
+					<td><%= @activity.description %></td>
+					<td><%= @activity.work_hours %></td>
+					<td><%= @activity.extra %></td>
+					<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit',edit_activity_path(@activity) %>
+				</tr>
+			</tbody>
+		</table>
+	</div>		
+	
+<%= link_to(raw(("<i class='fa fa-reply pr10'></i>") + "Back"), activities_path(:my_activity => { :sheetfile_id => @activity.sheetfile_id }), :class => "btn btn-primary btn-sm") %>	
 
-<p>
-  <strong>Type activity:</strong>
-  <%= @activity.type_activity %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @activity.description %>
-</p>
-
-<p>
-  <strong>Work hours:</strong>
-  <%= @activity.work_hours %>
-</p>
-
-<p>
-  <strong>Extra:</strong>
-  <%= @activity.extra %>
-</p>
-
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', activities_path(:my_activity => { :sheetfile_id => @activity.sheetfile_id }) %>
 </div>

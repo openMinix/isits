@@ -1,13 +1,18 @@
-<div id="myform">
-	<%= form_for(@client) do |f| %>
-		<h1>New client</h1>
+<div class="content">
+	<%= form_for @client, html: {role: "form",class: "content-center"} do |f| %>
+		<blockquote>
+			<p>New client</p>
+		</blockquote>	
 		
-		<%= f.label :client_name %>
-		<%= f.text_field :client_name, :class => 'signin-input' %>
+		<div class="form-group">
+			<%= f.label :client_name %>
+			<%= f.text_field :client_name, :class => 'form-control' %>
+		</div>	
 	  
-		<%= f.submit "Create client", :class => 'btn btn-primary signin-submit' %>
+	  
+		<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Create client", :class => 'btn btn-success no-border' %></button>
 	  
 	<% end %>
 
-<%= link_to 'Back', clients_path %>
+<%= link_to(raw(("<i class='fa fa-reply pr10'></i>") + "Back"), clients_path, :class => "btn btn-primary btn-sm") %>	
 </div>

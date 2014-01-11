@@ -1,24 +1,37 @@
-<div id="myform">
-	<%= form_for @activity do |f| %>
-		<h1>Editing activity</h1>
+<div class="content">
+	<%= form_for @activity, html: {role: "form",class: "content-center"} do |f| %>
+		<blockquote>
+			<p>Edit activity no# <%= @activity.id %></p>
+		</blockquote>
 		
-		<%= f.label :sheetfile_id %>
-		<%= f.text_field :sheetfile_id, :input_html => { :value => @activity.sheetfile_id } , :class => 'signin-input' %>
+		<div class="form-group">
+			<%= f.label :sheetfile_id %>
+			<%= f.text_field :sheetfile_id, :input_html => { :value => @activity.sheetfile_id } , :class => 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= f.label :type_activity %>
+			<%= f.text_field :type_activity, :input_html => { :value => @activity.type_activity }, :class => 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= f.label :description %>
+			<%= f.text_field :description, :input_html => { :value => @activity.description }, :class => 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= f.label :work_hours %>
+			<%= f.number_field :work_hours, :input_html => { :value => @activity.work_hours }, :class => 'form-control' %>
+		</div>	
+		<div class="form-group">
+			<%= f.label :extra %>
+			<%= f.check_box :extra, :input_html => { :value => @activity.extra }, :class => 'form-control' %>
+		</div>
 		
-		<%= f.label :type_activity %>
-		<%= f.text_field :type_activity, :input_html => { :value => @activity.type_activity }, :class => 'signin-input' %>
+		<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Update activity", :class => 'btn btn-success no-border' %></button>
 		
-		<%= f.label :description %>
-		<%= f.text_field :description, :input_html => { :value => @activity.description }, :class => 'signin-input' %>
-		
-		<%= f.label :work_hours %>
-		<%= f.number_field :work_hours, :input_html => { :value => @activity.work_hours }, :class => 'signin-input' %>
-		
-		<%= f.label :extra %>
-		<%= f.check_box :extra, :input_html => { :value => @activity.extra }, :class => 'signin-checkbox' %>
-
-		<%= f.submit "Update activity", :class => 'btn btn-primary signin-submit' %>
 	<% end %>
-	<%= link_to 'Show', @activity %> |
-	<%= link_to 'Back', activities_path(:my_activity => { :sheetfile_id => @activity.sheetfile_id }) %>
+	
+	<%= link_to(raw(("<i class='fa fa-files-o pr10'></i>") + "Show activity"), @activity, :class => "btn btn-info") %>
+	<br><br>
+	
+	<%= link_to(raw(("<i class='fa fa-reply pr10'></i>") + "Back"), activities_path(:my_activity => { :sheetfile_id => @activity.sheetfile_id }), :class => "btn btn-primary btn-sm") %>	
+
 </div>	

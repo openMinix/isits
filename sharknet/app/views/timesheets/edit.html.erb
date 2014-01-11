@@ -22,11 +22,17 @@
 
 			<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Update timesheet", :class => 'btn btn-success no-border' %></button>
 	<% end %>
-	<button class="btn btn-info"><i class="fa fa-plus-circle pr10"></i><%= link_to 'Add sheetfile to timesheet', new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet.id }) %></button>
+	
+	<%= link_to(raw(("<i class='fa fa-plus-circle pr10'></i>") + "Add sheetfile to timesheet"), new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet.id }), :class => "btn btn-info") %>
+	
 	<br><br>
-	<button class="btn btn-info"><i class="fa fa-files-o pr10"></i><%= link_to 'Show timesheet', @timesheet %></button>
+
+	<%= link_to(raw(("<i class='fa fa-files-o pr10'></i>") + "Show timesheet"), @timesheet, :class => "btn btn-info") %>
+	
 	<br><br>
-	<button class="btn btn-primary btn-sm"><%= link_to 'Back', timesheets_path %></button>
+	
+	<%= link_to(raw(("<i class='fa fa-reply pr10'></i>") + "Back"), timesheets_path, :class => "btn btn-primary btn-sm") %>	
+	
 </div>	
 
 
