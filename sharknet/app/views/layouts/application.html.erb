@@ -15,14 +15,15 @@
 				<p class="navbar-text navbar-right">
 					<button class="btn btn-primary btn-sm"><i class="fa fa-sign-in pr10"></i>Signed in as <b><%= "#{current_user.user_fullname}" %></b></button>
 					
-					<button class="btn btn-danger btn-sm"><i class="fa fa-sign-out pr10"></i><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></button>
+					<%= link_to(raw(("<i class='fa fa-sign-out pr10'></i>") + "Sign out"), destroy_user_session_path, :method => :delete, :class => "btn btn-danger btn-sm") %>
 				</p>
 			</div>
 	<% else %>
 			<div class="jumbotron">
 				<h2>The<br><small>Sharknetors team</small></br></h2>
 				<p class="navbar-text navbar-right">
-					<button class="btn btn-primary btn-sm"><i class="fa fa-sign-in pr10"></i><%= link_to "Sign in", new_user_session_path %></button>
+					
+					<%= link_to(raw(("<i class='fa fa-sign-in pr10'></i>") + "Sign in"), new_user_session_path, :class => "btn btn-primary btn-sm") %>
 				</p>
 			</div>
 	<% end %>

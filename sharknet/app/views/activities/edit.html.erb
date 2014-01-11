@@ -25,8 +25,10 @@
 			<%= f.check_box :extra, :input_html => { :value => @activity.extra }, :class => 'form-control' %>
 		</div>
 		
-		<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Update activity", :class => 'btn btn-success no-border' %></button>
 		
+		<%= button_tag(type: 'submit', class: "btn btn-success") do %>
+			<i class="fa fa-file-text-o"></i> Update activity
+		<% end %>
 	<% end %>
 	
 	<%= link_to(raw(("<i class='fa fa-files-o pr10'></i>") + "Show activity"), @activity, :class => "btn btn-info") %>

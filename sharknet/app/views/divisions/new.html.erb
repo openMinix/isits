@@ -11,12 +11,15 @@
 		
 		<div class="form-group">
 			<%= f.label :division_head%> <br>
-			<%= collection_select(:division, :user_id, User.all, :id, :user_fullname, {:class => "form-control"} ) %>
+			<%= collection_select(:division, :user_id, User.all, :id, :user_fullname, {}, {:class => "form-control"} ) %>
 		</div>	
-			
-		<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Create division", :class => 'btn btn-success no-border' %></button>
-	  
+		
+		<%= button_tag(type: 'submit', class: "btn btn-success") do %>
+			<i class="fa fa-file-text-o"></i> Create division
+		<% end %>		
+		
 	<% end %>
 
-<button class="btn btn-primary btn-sm"><%= link_to 'Back', timesheets_path %></button>
+	<%= link_to(raw(("<i class='fa fa-reply pr10'></i>") + "Back"),  timesheets_path, :class => "btn btn-primary btn-sm") %>	
+
 </div>

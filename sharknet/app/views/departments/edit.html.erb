@@ -11,21 +11,25 @@
 
 		<div class="form-group">
 		<%= f.label :department_head %> <br>    
-		<%= collection_select(:department, :user_id, User.all, :id, :user_fullname) %>
+		<%= collection_select(:department, :user_id, User.all, :id, :user_fullname, {}, {:class => 'form-control'}) %>
 		</div>
-
-		<%= fields_for @department.division do |division_fields| %>
-		<%= f.label :division %><br>
-		<%= division_fields.text_field :div_name,:class => 'form-control' %>
+		<div class="form-group">
+			<%= fields_for @department.division do |division_fields| %>
+			<%= f.label :division %><br>
+			<%= division_fields.text_field :div_name,:class => 'form-control' %>
+			<% end %>
+		</div>
+		
+		<%= button_tag(type: 'submit', class: "btn btn-success") do %>
+			<i class="fa fa-file-text-o"></i> Update department
 		<% end %>
-		<br>
-		<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Update department", :class => 'btn btn-success no-border' %></button>
+
 	<% end %>
-	<br>
-	<button class="btn btn-info"><i class="fa fa-files-o pr10"></i><%= link_to 'Show', @department %> </button>
+	
+	<%= link_to(raw(("<i class='fa fa-files-o pr10'></i>") + "Show department"), @department, :class => "btn btn-info") %>
+	
 	<br><br>
-	<button class="btn btn-primary btn-sm"><%= link_to 'Back', departments_path(:my_department => { :division_id => @department.division_id }) %></button>
+	
+	<%= link_to(raw(("<i class='fa fa-reply pr10'></i>") + "Back"), departments_path(:my_department => { :division_id => @department.division_id }), :class => "btn btn-primary btn-sm") %>	
+	
 </div>
-
-
-

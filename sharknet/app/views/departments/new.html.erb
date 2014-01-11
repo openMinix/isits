@@ -1,30 +1,33 @@
 <div class="content">
 	<%= form_for @department, html: {role: "form",class: "content-center"} do |f| %>
-	<blockquote>
-		<p>New department</p>
-	</blockquote>	
+		<blockquote>
+			<p>New department</p>
+		</blockquote>	
 
-	<div class="form-group">
-		<%= f.label :dept_name %>
-		<%= f.text_field :dept_name, :class => "form-control" %>
-	</div>
+		<div class="form-group">
+			<%= f.label :dept_name %>
+			<%= f.text_field :dept_name, :class => "form-control" %>
+		</div>
+			
+		<div class="form-group">	
+			<%= f.label :department_head%> <br>    
+			<%= collection_select(:department, :user_id, User.all, :id, :user_fullname, {}, {:class => "form-control"}) %>
+		</div>		
 		
-	<div class="form-group">	
-		<%= f.label :department_head%> <br>    
-		<%= collection_select(:department, :user_id, User.all, :id, :user_fullname, {}, {:class => "form-control"}) %>
-	</div>		
+		<div class="form-group">	
+		<%= f.hidden_field :division_id, :input_html => { :value => @department.division_id }, :class => "form-control" %>
+			
+		<%= fields_for @department.division do |division_fields| %>
+			<%= f.label :division %><br>
+			<%= division_fields.text_field :div_name,  :class => "form-control", :readonly => true %>
+		<% end %>
+			
+		</div>	
+		
+		<%= button_tag(type: 'submit', class: "btn btn-success") do %>
+			<i class="fa fa-file-text-o"></i> Create department
+		<% end %>
 	
-	<div class="form-group">	
-	<%= f.hidden_field :division_id, :input_html => { :value => @department.division_id }, :class => "form-control" %>
-		
-	<%= fields_for @department.division do |division_fields| %>
-		<%= f.label :division %><br>
-		<%= division_fields.text_field :div_name,  :class => "form-control", :readonly => true %>
-	<% end %>
-		
-	</div>	
-	
-	<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Create department", :class => 'btn btn-success no-border' %></button>
 	<% end %>
 	
 	<%= link_to(raw(("<i class='fa fa-reply pr10'></i>") + "Back"), departments_path(:my_department => { :division_id => @department.division_id }), :class => "btn btn-primary btn-sm") %>	

@@ -12,6 +12,12 @@
 			<%= f.email_field :email, :autofocus => true, :class => "form-control" %>
 		</div>
 	
+<<<<<<< HEAD
+=======
+		<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+			<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+		<% end %>
+>>>>>>> ae573881708f347c085c5957a78f16c906703461
 
 		<div class="form-group">
 			<%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
@@ -34,8 +40,10 @@
 			<%= f.password_field :current_password, :class => "form-control" %>
 		</div>
 
-		<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Update", :class => "btn btn-success no-border" %></button>	
-	  
+		
+		<%= button_tag(type: 'submit', class: "btn btn-success") do %>
+			<i class="fa fa-file-text-o"></i> Update user
+		<% end %>
 	<% end %>
 
 

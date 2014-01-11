@@ -1,19 +1,22 @@
-<h1>New reports</h1>
+<div class="content">
+	<%= form_tag(activities_depresults_path, method: "get", role: "form",class: "content-center" ) do %>
+		<blockquote>
+			<p>New reports</p>
+		</blockquote>
 
-<%= form_tag(activities_depresults_path, method: "get" ) do %>
-  <%= label_tag(:id, "User ID:") %>
-  <%= text_field_tag(:id) %>
+		<div class="form-group">
+			<%= label_tag(:id, "User ID:") %>
+			<%= text_field_tag(:id, nil, :class => 'form-control') %>
+		</div>
+		<div class="form-group">
+			<%= label_tag(:recorddate, "Activities start date:") %>
+			<%= select_date Date.today, {prefix: :created_at}, {:class => 'form-control'} %>
+		</div>
+		<div class="form-group">
+			<%= label_tag(:recorddate, "Activities end date:") %>
+			<%= select_date Date.today, {prefix: :created_at_end}, {:class => 'form-control'} %>
+		</div>
 
-  <br>
-  <%= label_tag(:recorddate, "Activities start date:") %>
-  <%= select_date Date.today, prefix: :created_at%>
-
-
-  <%= label_tag(:recorddate, "Activities end date:") %>
-  <%= select_date Date.today, prefix: :created_at_end%>
-  <br>
-
-  <%= submit_tag("Generate") %>
-<% end %>
-
-~                                     
+	  <%= submit_tag "Generate", :class => "btn btn-success" %>
+	<% end %>
+</div>
