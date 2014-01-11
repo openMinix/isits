@@ -11,7 +11,9 @@
 <div class="container">
 	<% if user_signed_in? %>
 			<div class="jumbotron">
-				<h2>Welcome<br><small>Sharknetors team</small></br></h2>
+				
+				<%= link_to(raw(("<h2>") + "Welcome" + ("<br><small>") + "Sharknetors team" + ("</small></br></h2>")), root_path) %>
+
 				<p class="navbar-text navbar-right">
 					<button class="btn btn-primary btn-sm"><i class="fa fa-sign-in pr10"></i>Signed in as <b><%= "#{current_user.user_fullname}" %></b></button>
 					
