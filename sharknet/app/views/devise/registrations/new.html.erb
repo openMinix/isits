@@ -25,6 +25,11 @@
 			<%= f.label :user_job%>
 			<%= collection_select(:user, :user_job_id, UserJob.where(:id => [1, 4, 5] ), :id, :title, {}, {:class=>'form-control'}) %>
 		</div>
+
+      <div class="form-group">
+      <%= f.label :department_id %>
+      <%= grouped_collection_select(:user, :department_id, Division.all, :departments, :div_name, :id, :dept_name, {}, {:class=>'form-control'}) %>
+      </div>
 		
 		<%= button_tag(type: 'submit', class: "btn btn-success") do %>
 			<i class="fa fa-file-text-o"></i> Add user
