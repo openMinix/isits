@@ -16,8 +16,10 @@
 			<% end %>
 		</div>	
 		
-		<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Update project", :class => 'btn btn-success no-border' %></button>
-
+		<%= button_tag(type: 'submit', class: "btn btn-success") do %>
+			<i class="fa fa-file-text-o"></i> Update project
+		<% end %>
+		
 	<% end %>
 	
 	<%= link_to(raw(("<i class='fa fa-files-o pr10'></i>") + "Show project"), @project, :class => "btn btn-info") %>

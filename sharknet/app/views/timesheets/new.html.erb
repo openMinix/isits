@@ -17,8 +17,10 @@
 		
 	   
 		</div>
+		<%= button_tag(type: 'submit', class: "btn btn-success") do %>
+			<i class="fa fa-file-text-o"></i> Create timesheet
+		<% end %>
 		
-		<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Create timesheet", :class => 'btn btn-success no-border' %></button>
 	<% end %>
 	
 <%= link_to(raw(("<i class='fa fa-reply pr10'></i>") + "Back"), timesheets_path, :class => "btn btn-primary btn-sm") %>	

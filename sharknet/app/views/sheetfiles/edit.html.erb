@@ -13,8 +13,11 @@
                                :use_month_numbers => false,
                                :discard_day => false,
                                :order => [:year, :month, :day]}, {:value => @sheetfile.day, :class => 'form-control' } %>
-		</div>					   
-		<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Update sheetfile", :class => 'btn btn-success no-border' %></button>					   
+		</div>		
+		<%= button_tag(type: 'submit', class: "btn btn-success") do %>
+			<i class="fa fa-file-text-o"></i> Update sheetfile
+		<% end %>		
+		
 	<% end %>	
 	
 	<%= link_to(raw(("<i class='fa fa-plus-circle pr10'></i>") + "Add activity"), new_activity_path(:my_activity => { :sheetfile_id => @sheetfile.id }), :class => "btn btn-info") %>
