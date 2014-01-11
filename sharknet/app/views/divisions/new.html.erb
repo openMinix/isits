@@ -1,16 +1,22 @@
-<div id="myform">
-	<%= form_for(@division) do |f| %>
-		<h1>New division</h1>
+<div class="content">
+	<%= form_for @division, html: {role: "form",class: "content-center"} do |f| %>
+		<blockquote>
+			<p>New division</p>
+		</blockquote>	
 
-		<%= f.label :div_name %>
-		<%= f.text_field :div_name, :class => 'signin-input' %>
-
-    <%= f.label :division_head%> <br>
-    <%= collection_select(:division, :user_id, User.all, :id, :user_fullname) %>
-
-		<%= f.submit "Create division", :class => 'btn btn-primary signin-submit' %>
+		<div class="form-group">	
+			<%= f.label :div_name %>
+			<%= f.text_field :div_name, {:class => "form-control"} %>
+		</div>
+		
+		<div class="form-group">
+			<%= f.label :division_head%> <br>
+			<%= collection_select(:division, :user_id, User.all, :id, :user_fullname, {:class => "form-control"} ) %>
+		</div>	
+			
+		<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Create division", :class => 'btn btn-success no-border' %></button>
 	  
 	<% end %>
 
-<%= link_to 'Back', divisions_path %>
+<button class="btn btn-primary btn-sm"><%= link_to 'Back', timesheets_path %></button>
 </div>

@@ -1,19 +1,25 @@
-<div id="myform">
+<div class="content">
 
-<%= form_for(@division) do |f| %>
-	<h1>Editing division</h1>
+<%= form_for @division, html: {role: "form",class: "content-center"} do |f| %>
+	<blockquote>
+		<p>Edit division no# <%= @division.id %></p>
+	</blockquote>
+	
+	<div class="form-group">
+		<%= f.label :div_name %>
+		<%= f.text_field :div_name, :class => 'form-control'%>
+	</div>
 
-    <%= f.label :div_name %>
-    <%= f.text_field :div_name, :class => 'signin-input' %>
+	<div class="form-group">
+		<%= f.label :division_head%> <br>
+		<%= collection_select(:division, :user_id, User.all, :id, :user_fullname) %>
+	</div>
 
-    <%= f.label :division_head%> <br>
-    <%= collection_select(:division, :user_id, User.all, :id, :user_fullname) %>
-
-  
-    <%= f.submit "Update division", :class => 'btn btn-primary signin-submit' %>
  
+    <button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Update division", :class => 'btn btn-success no-border' %></button>
 <% end %>
 
-<%= link_to 'Show', @division %> |
-<%= link_to 'Back', divisions_path %>
+<button class="btn btn-info"><i class="fa fa-files-o pr10"></i><%= link_to 'Show', @division %></button> 
+<br><br>
+<button class="btn btn-primary btn-sm"><%= link_to 'Back', divisions_path %></button>
 </div>

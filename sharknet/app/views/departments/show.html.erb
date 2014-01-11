@@ -1,27 +1,47 @@
-<div id="myform">
+<div class="content">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Department name:</strong>
-  <%= @department.dept_name %>
-  <strong>Department head:<strong>
-  <% if @department.user == nil %>
-    Nobody assigned
-  <% else %>
-    <%= @department.user.user_fullname%>
-   <% end %>
+<blockquote>
+	<p>Department no# <%= @department.id %></p>
+</blockquote>	
 
-</p>
+<div class="table-responsive">
+<table class="table table-striped table-bordered table-hover table-condensed">
+	<thead>
+		<tr>
+		  <th>Department name</th>
+		  <th>Department head</th>
+		  <th>Division name</th>
+		  <th colspan="2">Actions</th>
+		</tr>
+	</thead>
 
-<p>
-  <strong>Division name:</strong>
-	<%= fields_for @department.division do |division_fields| %>
-        <div class="field">
+	<tbody>
+		<tr>
+			<td><%= @department.dept_name %></td>
+			<% if @department.user == nil %>
+				Nobody assigned
+			<% else %>
+				<td><%= @department.user.user_fullname%></td>
+				
+<%= fields_for @department.division do |division_fields| %>
+        <td>
             <%= division_fields.text_field :div_name, :readonly => true %>
-         </div>
+         </td>
     <% end %>
-</p>
+			<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit', edit_department_path(@department) %> </td>	
+			
+		   <% end %>  
+		   
+			
+				
+	    </tr>
+	</tbody>
+</table>
+</div>
 
-<%= link_to 'Edit', edit_department_path(@department) %> |
-<%= link_to 'Back', departments_path(:my_department => { :division_id => @department.division_id }) %>
+
+
+
+<button class="btn btn-primary btn-sm"><%= link_to 'Back', departments_path(:my_department => { :division_id => @department.division_id }) %></button>
 </div>
