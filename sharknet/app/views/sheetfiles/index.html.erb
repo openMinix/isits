@@ -16,13 +16,13 @@
 				<% @sheetfiles.each do |sheetfile| %>
 				  <tr>
 					<td><%= sheetfile.day %></td>
-          <% if sheetfile.vacation == 0 %>
-					<td><i class="fa fa-folder-open-o pr10"></i><%= link_to 'Show', sheetfile %></td>
-          <% elsif sheetfile.vacation == 1 %>
-          <td> On vacation </td>
-          <% else %>
-          <td> On medical vacation </td>
-          <% end %>
+					  <% if sheetfile.vacation == 0 %>
+								<td><i class="fa fa-folder-open-o pr10"></i><%= link_to 'Show', sheetfile %></td>
+					  <% elsif sheetfile.vacation == 1 %>
+					  <td> <i class="fa fa-smile-o pr10"></i>On vacation </td>
+					  <% else %>
+					  <td> <i class="fa fa-wheelchair pr10"></i>On medical vacation </td>
+					  <% end %>
 					<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit', edit_sheetfile_path(sheetfile) %></td>
 					<td><i class="fa fa-ban pr10"></i><%= link_to 'Destroy', sheetfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 				  </tr>

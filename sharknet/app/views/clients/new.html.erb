@@ -9,9 +9,10 @@
 			<%= f.text_field :client_name, :class => 'form-control' %>
 		</div>	
 	  
-	  
-		<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Create client", :class => 'btn btn-success no-border' %></button>
-	  
+		<%= button_tag(type: 'submit', class: "btn btn-success") do %>
+			<i class="fa fa-file-text-o"></i> Create client
+		<% end %>
+		
 	<% end %>
 
 <%= link_to(raw(("<i class='fa fa-reply pr10'></i>") + "Back"), clients_path, :class => "btn btn-primary btn-sm") %>	

@@ -1,32 +1,31 @@
-<div id="myform" class="listing-table">
-<h1>Report listings</h1>
+<div class="content">
+	<blockquote>
+		<p>Report listing</p>
+	</blockquote>
 
-<table>
-  <thead>
-    <tr>
-      <th>Client name </th>
-      <th>Project name</th>
-      <th>Hours worked</th>
-      <th>Extra hours</th>
-      <th>Percentage</th>
+	<div class="table-responsive">
+		<table class="table table-striped table-bordered table-hover table-condensed">
+			<thead>
+				<tr>
+					<th><i class="fa fa-male pr10"></i>Client name </th>
+					<th><i class="fa fa-book pr10"></i>Project name</th>
+					<th><i class="fa fa-ticket pr10"></i>Hours worked</th>
+					<th><i class="fa fa-trophy pr10"></i>Extra hours</th>
+					<th><i class="fa fa-spinner pr10"></i>Percentage</th>
+				</tr>
+			</thead>
 
-    </tr>
-  </thead>
-
-  <tbody>
-
-    <% @user_activities.each do |activity| %>
-      <tr>
-        <td><%= activity.project.client.client_name%></td>
-        <td><%= activity.project.project_name%></td>
-        <td><%= activity.hoursw%></td>
-        <td><%= activity.extrah%></td>
-        <td><%= (activity.hoursw/@total_hours.to_f )* 100%> %</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+			<tbody>
+				<% @user_activities.each do |activity| %>
+					<tr>
+						<td><%= activity.project.client.client_name %></td>
+						<td><%= activity.project.project_name %></td>
+						<td><%= activity.hoursw %></td>
+						<td><%= activity.extrah %></td>
+						<td><%= (activity.hoursw/@total_hours.to_f )* 100%> %</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
 </div>

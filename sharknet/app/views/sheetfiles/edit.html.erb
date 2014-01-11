@@ -16,9 +16,12 @@
 		</div>					   
 		<button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Update sheetfile", :class => 'btn btn-success no-border' %></button>					   
 	<% end %>	
-	<button class="btn btn-info"><i class="fa fa-plus-circle pr10"></i><%= link_to 'Add activity', new_activity_path(:my_activity => { :sheetfile_id => @sheetfile.id }) %></button>
+	
+	<%= link_to(raw(("<i class='fa fa-plus-circle pr10'></i>") + "Add activity"), new_activity_path(:my_activity => { :sheetfile_id => @sheetfile.id }), :class => "btn btn-info") %>
 	<br><br>
-	<button class="btn btn-info"><i class="fa fa-files-o pr10"></i><%= link_to 'Show', @sheetfile %></button>
+	<%= link_to(raw(("<i class='fa fa-files-o pr10'></i>") + "Show sheetfile"), @sheetfile, :class => "btn btn-info") %>
+	
 	<br><br>
-	<button class="btn btn-primary btn-sm"><%= link_to 'Back', sheetfiles_path(:my_sheetfile => { :timesheet_id => @sheetfile.timesheet_id }) %></button>
+	<%= link_to(raw(("<i class='fa fa-reply pr10'></i>") + "Back"), sheetfiles_path(:my_sheetfile => { :timesheet_id => @sheetfile.timesheet_id }), :class => "btn btn-primary btn-sm") %>	
+
 </div>

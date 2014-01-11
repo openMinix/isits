@@ -12,14 +12,18 @@
 
 	<div class="form-group">
 		<%= f.label :division_head%> <br>
-		<%= collection_select(:division, :user_id, User.all, :id, :user_fullname) %>
+		<%= collection_select(:division, :user_id, User.all, :id, :user_fullname, {}, {:class => 'form-control'}) %>
 	</div>
 
- 
-    <button class="btn btn-success"><i class='fa fa-file-text-o'></i><%= f.submit "Update division", :class => 'btn btn-success no-border' %></button>
+	<%= button_tag(type: 'submit', class: "btn btn-success") do %>
+		<i class="fa fa-file-text-o"></i> Update division
+	<% end %>
+   
 <% end %>
+<%= link_to(raw(("<i class='fa fa-files-o pr10'></i>") + "Show division"), @division, :class => "btn btn-info") %>
 
-<button class="btn btn-info"><i class="fa fa-files-o pr10"></i><%= link_to 'Show', @division %></button> 
 <br><br>
-<button class="btn btn-primary btn-sm"><%= link_to 'Back', divisions_path %></button>
+
+<%= link_to(raw(("<i class='fa fa-reply pr10'></i>") + "Back"), divisions_path, :class => "btn btn-primary btn-sm") %>	
+
 </div>
