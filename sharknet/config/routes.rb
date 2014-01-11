@@ -1,6 +1,6 @@
 Sharknet::Application.routes.draw do
-
-  get "webservices/showwork"
+  
+   get "webservices/showwork"
   get "webservices/showvacation"
   resources :user_jobs
 
@@ -52,7 +52,6 @@ Sharknet::Application.routes.draw do
   get 'timesheets/departments' => 'timesheets#departments_index', :as => :timesheets_departments
   get 'timesheets/director' => 'timesheets#director_index', :as => :timesheets_director
 
-  devise_for :users , :controllers => { :registrations => 'memberships' } 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -60,10 +59,14 @@ Sharknet::Application.routes.draw do
   devise_scope :user do
   resources :timesheets
 
+    devise_for :users , :controllers => { :registrations => 'memberships' }
+    get 'users/:id/edit' => 'memberships#edit', :as => :memberships_edit
+    match 'users/:id/update'=>'memberships#update', :via => [:post,:patch], :as => :memberships_update
+    match 'users/:id' => 'memberships#destroy', :via => :delete, :as => :admin_destroy_user
+
     root to: "devise/sessions#new"
 
     get 'memberships/index' => 'memberships#index'
-    match 'users/:id' => 'memberships#destroy', :via => :delete, :as => :admin_destroy_user
   end
 
   # Example of regular route:
