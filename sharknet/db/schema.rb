@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140102001634) do
+ActiveRecord::Schema.define(version: 20140111171838) do
 
   create_table "activities", force: true do |t|
     t.string   "type_activity"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140102001634) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "timesheet_id"
+    t.integer  "vacation"
   end
 
   add_index "sheetfiles", ["timesheet_id"], name: "index_sheetfiles_on_timesheet_id"

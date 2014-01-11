@@ -71,6 +71,6 @@ class SheetfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sheetfile_params
-      params.require(:sheetfile).permit(:day, :timesheet_id)
+      params.require(:sheetfile).permit(:day, :timesheet_id, :vacation)
     end
 end

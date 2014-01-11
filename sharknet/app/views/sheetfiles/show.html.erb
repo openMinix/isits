@@ -19,7 +19,11 @@
   <tbody>
     <tr>
         <td><%= @sheetfile.day %></td>
+        <% if (@sheetfile.vacation == 0) %>
         <td><i class="fa fa-folder-open-o pr10"></i><%= link_to 'View activities', activities_path(:my_activity => { :sheetfile_id => @sheetfile.id }) %></td>
+        <% else %>
+          <td>On vacation on this day.</td>
+        <% end %>
         <td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit', edit_sheetfile_path(@sheetfile) %></td>
       </tr>
   </tbody>
