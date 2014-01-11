@@ -22,7 +22,7 @@
 				<td><%= project.client.client_name%></td>
 				<td><i class="fa fa-folder-open-o pr10"></i><%= link_to 'Show', project %></td>
 				<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit', edit_project_path(project) %></td>
-				<td><i class="fa fa-ban pr10"></i><%= link_to 'Destroy', delete_project_path(project)%></td>
+				<td><i class="fa fa-ban pr10"></i><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?'} %></td>
 			  </tr>
 			<% end %>
 		  </tbody>
