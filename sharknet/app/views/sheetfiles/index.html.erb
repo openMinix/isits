@@ -25,9 +25,10 @@
 		</table>
 	</div>
 
-<button type="button" class="btn btn-success">
-	<i class="fa fa-plus-circle"></i>
-	<%= link_to 'Add sheetfile', new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet_id }) %>
-</button>
+
+<%= link_to(raw(("<i class='fa fa-plus-circle pr10'></i>") + "Add sheetfile")
+            , new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet_id })  
+            , :class => "btn btn-success") %>
+
 
 </div>
