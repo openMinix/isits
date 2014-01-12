@@ -6,11 +6,13 @@
 
 		<div class="form-group">
 			<%= label_tag(:dept_name, "Department name:") %>
-      <%= grouped_collection_select(:user, :department_id, Division.all, :departments, :div_name, :id, :dept_name, {}, {:class=>'form-control'}) %>
-    </div>
-
+		  <%= grouped_collection_select(:user, :department_id, Division.all, :departments, :div_name, :id, :dept_name, {}, {:class=>'form-control'}) %>
 		</div>
+
+		
 		
 	  <%= submit_tag "Generate", :class => "btn btn-success" %>
 	<% end %>
+	
+
 </div>

@@ -25,6 +25,8 @@ Sharknet::Application.routes.draw do
 
 #reports for division head
 
+get 'activities/pdf_div_users' => 'activities#pdf_div_users', :as => :pdf_div_users	
+
   get 'activities/divisions_users' => 'activities#divisions_users_search', :as => :activities_divisions_users
   get 'activities/divisions_users_result' => 'activities#divisions_users_result', :as => :activities_divresults_users
 

@@ -96,10 +96,15 @@ class ActivitiesController < ApplicationController
   end
 
   def divisions_users_result
-	  @dept_idd = Department.select('id').where('id' => params[:user][:department_id])
+	@dept_idd = Department.select('id').where('id' => params[:user][:department_id])
     @users = User.select('user_fullname as uf').where('department_id' => @dept_idd) 
-
+	
     render 'activities/divisions/divisions_users_reports'
+  end
+  
+  def pdf_div_users
+	@tmp = params[:par]
+	render 'activities/pdf_div_users'
   end
 
   

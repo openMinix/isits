@@ -1,0 +1,20 @@
+<%=
+	require "prawn"
+	Prawn::Document.generate('hello.pdf') do |pdf|
+		@tmp.each do |userr| 
+					pdf.text(userr)
+						
+		end 	
+	
+		pdf.table([
+			  ["Employee name"]
+		])
+		@tmp.each do |userr| 
+		pdf.table([
+			  [userr]
+		])
+		end
+	end
+	
+%>		
+
