@@ -8,12 +8,12 @@ class TimesheetsController < ApplicationController
   end
 
   def departments_index 
-    @timesheets = Timesheet.joins(:user).where('users.department_id' => current_user.department_id ).where(status:  'SUBMITTED')
+    @timesheets = Timesheet.joins(:user).where('users.department_id' => current_user.department_id ).order('timesheets.status DESC,timesheets.created_at DESC')
     render 'timesheets/department_index'
   end
 
   def divisions_index 
-    @timesheets = Timesheet.all
+    @timesheets = Timesheet.all.order('timesheets.created_at DESC')
 
     @timesheets.find_all do |timesheet|
       timesheet.user.department.division.id == current_user.department.division.id 
@@ -23,7 +23,7 @@ class TimesheetsController < ApplicationController
   end
 
   def director_index
-    @timesheets = Timesheet.all
+    @timesheets = Timesheet.all.order('timesheets.created_at DESC')
 
     render 'timesheets/director_index'
  
@@ -75,6 +75,8 @@ class TimesheetsController < ApplicationController
 
           if ( @timesheet.status == 'REJECTED' )
             UserMailer.rejected_email(@timesheet.user).deliver
+               @timesheet.status = 'OPEN'
+               @timesheet.save
           end
 
           if ( @timesheet.status == 'SUBMITTED' )
