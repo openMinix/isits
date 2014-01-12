@@ -13,10 +13,10 @@
 			</thead>
 	
 			<tbody>
-				<% @user_activities.each do |activity| %>
+				<% @user_activities.each do |project| %>
 					<tr>
-						<td><%= activity.project.project_name %></td>
-						<td><%= activity.hoursw %></td>
+						<td><%= project.project_name %></td>
+						<td><%= project.hoursw %></td>
 					</tr>
 				<% end %>
 			</tbody>

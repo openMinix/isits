@@ -67,7 +67,7 @@ class ActivitiesController < ApplicationController
 	
     @user_activities = Activity.joins(:sheetfile=> [{:timesheet=> :user}])
     .where('activities.project_id'=> @project_idd).where('activities.created_at' => date_created_start.midnight..(date_created_end.midnight + 1.day) )
-    .select('activities.work_hours as hoursw,  (CASE activities.extra WHEN "true" THEN activities.work_hours ELSE 0 END) as extrah , activities.project_id, users.user_fullname ')
+    .select('sum(activities.work_hours) as hoursw,  (CASE activities.extra WHEN "true" THEN activities.work_hours ELSE 0 END) as extrah , activities.project_id, users.user_fullname ').group("users.user_fullname")
 
     
     render 'activities/departments/departments_project_reports'
@@ -78,11 +78,11 @@ class ActivitiesController < ApplicationController
 
     date_created_end = Date.civil(params[:created_at_end][:year].to_i, params[:created_at_end][:month].to_i, params[:created_at_end][:day].to_i)
 	
-    @user_activities = Activity.joins(:sheetfile=> [{:timesheet=> :user}])
-    .where('activities.created_at' => date_created_start.midnight..(date_created_end.midnight + 1.day) )
-    .select('sum(activities.work_hours) as hoursw,  sum(CASE activities.extra WHEN "true" THEN activities.work_hours ELSE 0 END) as extrah , activities.project_id ').group('activities.project_id')
+   @user_activities= Activity.joins('LEFT OUTER JOIN projects on projects.id = activities.project_id')
+   .where('activities.created_at' => date_created_start.midnight..(date_created_end.midnight + 1.day) )
+   .select('IFNULL(sum(activities.work_hours),0) as hoursw, projects.project_name' ).group('projects.project_name')
 
-    
+
     render 'activities/departments/departments_period_reports'
   end
 
