@@ -112,7 +112,6 @@ class ActivitiesController < ApplicationController
 	  
     @departments = current_user.department.division.departments
 
-    dep_has = Hash.new
 
 	  @user_activities = Activity.joins(:sheetfile=> [{:timesheet=> :user}])
     .where('activities.created_at' => date_created_start.midnight..(date_created_end.midnight + 1.day) )
@@ -138,12 +137,38 @@ class ActivitiesController < ApplicationController
   end
 
   def director_users_result
+    @dept_idd = Department.select('id').where('id' => params[:user][:department_id])
+    @dept_name = Department.select('dept_name').where('id' => params[:user][:department_id])
+    @users = User.select('user_fullname as uf').where('department_id' => @dept_idd) 
+
+    render 'activities/director/director_users_reports'
   end
 
   def director_projects_result
+	  date_created_start = Date.civil(params[:created_at][:year].to_i, params[:created_at][:month].to_i, params[:created_at][:day].to_i)
+    date_created_end = Date.civil(params[:created_at_end][:year].to_i, params[:created_at_end][:month].to_i, params[:created_at_end][:day].to_i)
+	
+	  
+	  @user_activities = Activity.joins(:sheetfile=> [{:timesheet=> :user}])
+    .where('activities.created_at' => date_created_start.midnight..(date_created_end.midnight + 1.day) )
+    .select('sum(activities.work_hours) as hoursw, users.department_id,activities.project_id ').group('activities.project_id').group('users.department_id')
+    
+
+	  render 'activities/director/director_projects_reports'
+ 
   end
 
   def director_clients_result
+
+	  date_created_start = Date.civil(params[:created_at][:year].to_i, params[:created_at][:month].to_i, params[:created_at][:day].to_i)
+    date_created_end = Date.civil(params[:created_at_end][:year].to_i, params[:created_at_end][:month].to_i, params[:created_at_end][:day].to_i)
+
+    @activities=  Activity
+                .where('activities.created_at' => date_created_start.midnight..(date_created_end.midnight + 1.day) )
+                .select('sum(activities.work_hours) as hoursw, activities.project_id')
+                .group('activities.project_id')
+
+    render 'activities/director/director_clients_reports'
   end
 
 
