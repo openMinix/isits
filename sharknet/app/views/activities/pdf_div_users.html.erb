@@ -1,11 +1,8 @@
 <%=
 	require "prawn"
-	Prawn::Document.generate('hello.pdf') do |pdf|
-		@tmp.each do |userr| 
-					pdf.text(userr)
-						
-		end 	
-	
+	Prawn::Document.generate('employees_from_department.pdf') do |pdf|
+		
+		pdf.text('Raport useri din departament', :align => :center, :size => 30)
 		pdf.table([
 			  ["Employee name"]
 		])

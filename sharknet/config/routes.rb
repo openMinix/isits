@@ -13,6 +13,10 @@ Sharknet::Application.routes.draw do
   resources :clients
 
 # reports for department head
+  get 'activities/pdf_dept_users' => 'activities#pdf_dept_users', :as => :pdf_dept_users
+  get 'activities/pdf_dept_projects' => 'activities#pdf_dept_projects', :as => :pdf_dept_projects	
+  get 'activities/pdf_dept_periods' => 'activities#pdf_dept_periods', :as => :pdf_dept_periods
+
   get 'activities/departments' => 'activities#departments_search', :as => :activities_departments
   get 'activities/departments_result' => 'activities#departments_result', :as => :activities_depresults
 
@@ -25,8 +29,9 @@ Sharknet::Application.routes.draw do
 
 #reports for division head
 
-get 'activities/pdf_div_users' => 'activities#pdf_div_users', :as => :pdf_div_users	
-
+  get 'activities/pdf_div_users' => 'activities#pdf_div_users', :as => :pdf_div_users	
+  get 'activities/pdf_div_projects' => 'activities#pdf_div_projects', :as => :pdf_div_projects		
+  
   get 'activities/divisions_users' => 'activities#divisions_users_search', :as => :activities_divisions_users
   get 'activities/divisions_users_result' => 'activities#divisions_users_result', :as => :activities_divresults_users
 
@@ -34,6 +39,10 @@ get 'activities/pdf_div_users' => 'activities#pdf_div_users', :as => :pdf_div_us
   get 'activities/divisions_project_result' => 'activities#divisions_projects_result', :as => :activities_divresults_project
 
 # reports for director  
+  get 'activities/pdf_director_users' => 'activities#pdf_director_users', :as => :pdf_director_users
+  get 'activities/pdf_director_projects' => 'activities#pdf_director_projects', :as => :pdf_director_projects
+  get 'activities/pdf_director_clients' => 'activities#pdf_director_clients', :as => :pdf_director_clients
+
   get 'activities/director_users' => 'activities#director_users_search', :as => :activities_director_users
   get 'activities/director_result' => 'activities#director_users_result', :as =>:activities_dirresults_users
 

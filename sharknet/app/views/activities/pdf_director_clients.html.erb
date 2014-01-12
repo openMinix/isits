@@ -1,0 +1,19 @@
+<%=
+	require "prawn"
+	Prawn::Document.generate('clients_for_director.pdf') do |pdf|
+		
+		pdf.text('Raport clienti', :align => :center, :size => 30)
+		pdf.table([
+			  ["Project name","Project client","Hours worked"]
+		])
+		
+		
+		@tmp.each do |userr| 
+		pdf.table([
+			  [userr]
+		])
+		end
+	end
+	
+%>		
+

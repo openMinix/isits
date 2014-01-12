@@ -85,6 +85,21 @@ class ActivitiesController < ApplicationController
 
     render 'activities/departments/departments_period_reports'
   end
+  
+   def pdf_dept_users
+	@tmp = params[:par]
+	render 'activities/pdf_dept_users'
+  end
+  
+  def pdf_dept_projects
+	@tmp = params[:par]
+	render 'activities/pdf_dept_projects'
+  end
+  
+  def pdf_dept_periods
+	@tmp = params[:par]
+	render 'activities/pdf_dept_periods'
+  end
 
 #reports for division head
   def divisions_users_search
@@ -105,6 +120,12 @@ class ActivitiesController < ApplicationController
   def pdf_div_users
 	@tmp = params[:par]
 	render 'activities/pdf_div_users'
+  end
+  
+  def pdf_div_projects
+	@tmp = params[:par]
+	
+	render 'activities/pdf_div_projects'
   end
 
   
@@ -147,6 +168,23 @@ class ActivitiesController < ApplicationController
     @users = User.select('user_fullname as uf').where('department_id' => @dept_idd) 
 
     render 'activities/director/director_users_reports'
+  end
+  
+   def pdf_director_users
+	@tmp = params[:par]
+	render 'activities/pdf_director_users'
+  end
+  
+  def pdf_director_projects
+	@tmp = params[:par]
+	
+	render 'activities/pdf_director_projects'
+  end
+  
+  def pdf_director_clients
+	@tmp = params[:par]
+	
+	render 'activities/pdf_director_clients'
   end
 
   def director_projects_result
