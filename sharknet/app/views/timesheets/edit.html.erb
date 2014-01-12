@@ -6,9 +6,9 @@
 			<div class="form-group">		
 				<%= f.label :status %>
 				<% if current_user.id == @timesheet.user_id %>
-					<%= f.select(:status, [['OPEN','OPEN'],['SUBMITTED','SUBMITTED'],['APPROVED','APPROVED'],['REJECTED','REJECTED']], { :input_html => { :value => @timesheet.status }}, { :class => 'form-control' }) %>
+					<%= f.select(:status, [['OPEN','OPEN'],['SUBMITTED','SUBMITTED']], { :input_html => { :value => @timesheet.status }}, { :class => 'form-control' }) %>
 				<% else %>
-					<%= f.select(:status, [['OPEN','OPEN'],['SUBMITTED','SUBMITTED'],['APPROVED','APPROVED'],['REJECTED','REJECTED']], { :input_html => { :value => @timesheet.status }}, { :class => 'form-control' }) %>	
+					<%= f.select(:status, [['APPROVED','APPROVED'],['REJECTED','REJECTED']], { :input_html => { :value => @timesheet.status }}, { :class => 'form-control' }) %>	
 				<% end %>
 			</div>
 			<div class="form-group">

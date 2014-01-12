@@ -73,6 +73,14 @@ class TimesheetsController < ApplicationController
               @timesheet.save
           end
 
+          if ( @timesheet.status == 'REJECTED' )
+            UserMailer.rejected_email(@timesheet.user).deliver
+          end
+
+          if ( @timesheet.status == 'SUBMITTED' )
+            UserMailer.notify_email(@timesheet.user.department.user).deliver
+          end
+
         format.html { redirect_to @timesheet, notice: 'Timesheet was successfully updated.' }
         format.json { head :no_content }
       else
