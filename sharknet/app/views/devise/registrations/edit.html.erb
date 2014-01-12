@@ -12,12 +12,9 @@
 			<%= f.email_field :email, :autofocus => true, :class => "form-control" %>
 		</div>
 	
-<<<<<<< HEAD
-=======
 		<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
 			<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
 		<% end %>
->>>>>>> ae573881708f347c085c5957a78f16c906703461
 
 		<div class="form-group">
 			<%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
