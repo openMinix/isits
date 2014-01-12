@@ -12,7 +12,7 @@
 	<% if user_signed_in? %>
 			<div class="jumbotron">
 				
-				<%= link_to(raw(("<h2>") + "Welcome" + ("<br><small>") + "Sharknetors team" + ("</small></br></h2>")), root_path) %>
+				<%= link_to(raw(("<h2>") + "Welcome" + ("<br><small>") + "Sharknado team" + ("</small></br></h2>")), root_path) %>
 
 				<p class="navbar-text navbar-right">
 					<button class="btn btn-primary btn-sm"><i class="fa fa-sign-in pr10"></i>Signed in as <b><%= "#{current_user.user_fullname}" %></b></button>
@@ -22,7 +22,7 @@
 			</div>
 	<% else %>
 			<div class="jumbotron">
-				<h2>The<br><small>Sharknetors team</small></br></h2>
+				<h2>The<br><small>Sharknado team</small></br></h2>
 				<p class="navbar-text navbar-right">
 					
 					<%= link_to(raw(("<i class='fa fa-sign-in pr10'></i>") + "Sign in"), new_user_session_path, :class => "btn btn-primary btn-sm") %>
