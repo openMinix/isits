@@ -1,12 +1,13 @@
 <div class="content">
-	<%= form_tag(activities_dirresults_users, method: "get", role: "form",class: "content-center" ) do %>
+	<%= form_tag(activities_dirresults_users_path, method: "get", role: "form",class: "content-center" ) do %>
 		<blockquote>
 			<p>New reports</p>
 		</blockquote>
 		
 		<div class="form-group">
 			<%= label_tag(:dept_name, "Department name:") %>
-			<%= text_field_tag(:dept_name, nil, :class => 'form-control') %>
+      <%= grouped_collection_select(:user, :department_id, Division.all, :departments, :div_name, :id, :dept_name, {}, {:class=>'form-control'}) %>
+                            
 		</div>
 
 	  <%= submit_tag "Generate", :class => "btn btn-success" %>
