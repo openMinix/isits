@@ -58,3 +58,6 @@ end
 
 #font-awesome
 gem "font-awesome-rails"
+
+#prawn for pdf files
+gem "prawn"
