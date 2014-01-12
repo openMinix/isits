@@ -16,8 +16,8 @@
 			<tbody>
 				<% @user_activities.each do |activity| %>
 					<tr>	
-						<td><%=  %></td>
-						<td><%=  %></td>
+						<td><%= Department.find(activity.department_id).dept_name  %></td>
+						<td><%= Project.find(activity.project_id).project_name  %></td>
 						<td><%= activity.hoursw %></td>
 					</tr>	
 					<% end %>		
