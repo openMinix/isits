@@ -12,31 +12,35 @@ Sharknet::Application.routes.draw do
 
   resources :clients
 
-  get 'activities/divisions' => 'activities#divisions_search', :as => :activities_divisions
+# reports for department head
   get 'activities/departments' => 'activities#departments_search', :as => :activities_departments
-  get 'activities/director' => 'activities#director_search', :as => :activities_director
-
-  get 'activities/divisions_result' => 'activities#divisions_result', :as => :activities_divresults
   get 'activities/departments_result' => 'activities#departments_result', :as => :activities_depresults
-  get 'activities/director_result' => 'activities#director_result', :as => :activities_dirresults
 
-
-  get 'activities/divisions_project' => 'activities#divisions_project_search', :as => :activities_divisions_project
   get 'activities/departments_project' => 'activities#departments_project_search', :as => :activities_departments_project
-  get 'activities/director_project' => 'activities#director_project_search', :as => :activities_director_project
-
-  get 'activities/divisions_project_result' => 'activities#divisions_project_result', :as => :activities_divresults_project
   get 'activities/departments_project_result' => 'activities#departments_project_result', :as => :activities_depresults_project
-  get 'activities/director_project_result' => 'activities#director_project_result', :as => :activities_dirresults_project
 
-
-  get 'activities/divisions_period' => 'activities#divisions_period_search', :as => :activities_divisions_period
   get 'activities/departments_period' => 'activities#departments_period_search', :as => :activities_departments_period
-  get 'activities/director_period' => 'activities#director_period_search', :as => :activities_director_period
-
-  get 'activities/divisions_period_result' => 'activities#divisions_period_result', :as => :activities_divresults_period
   get 'activities/departments_period_result' => 'activities#departments_period_result', :as => :activities_depresults_period
-  get 'activities/director_period_result' => 'activities#director_period_result', :as => :activities_dirresults_period
+
+
+#reports for division head
+
+  get 'activities/divisions_users' => 'activities#divisions_users_search', :as => :activities_divisions_users
+  get 'activities/divisions_users_result' => 'activities#divisions_users_result', :as => :activities_divresults_users
+
+  get 'activities/divisions_project' => 'activities#divisions_projects_search', :as => :activities_divisions_project
+  get 'activities/divisions_project_result' => 'activities#divisions_projects_result', :as => :activities_divresults_project
+
+# reports for director  
+  get 'activities/director_users' => 'activities#director_users_search', :as => :activities_director_users
+  get 'activities/director_result' => 'activities#director_users_result', :as => :activities_dirresults_users
+
+  get 'activities/director_project' => 'activities#director_projects_search', :as => :activities_director_project
+  get 'activities/director_project_result' => 'activities#director_projects_result', :as => :activities_dirresults_project
+
+  get 'activities/divisions_clients' => 'activities#director_clients_search', :as => :activities_director_clients
+  get 'activities/director_clients_result' => 'activities#director_clients_result', :as => :activities_dirresults_clients
+
 
 
 

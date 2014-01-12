@@ -24,9 +24,20 @@ class ActivitiesController < ApplicationController
   def edit
   end
 
+
+#reports for department head
   def departments_search
-      render 'activities/departments_search'
+      render 'activities/departments/departments_search'
   end
+
+  def departments_project_search
+      render 'activities/departments/departments_project_search'
+  end
+
+  def departments_period_search
+      render 'activities/departments/departments_period_search'
+  end
+
 
   def departments_result
 
@@ -43,8 +54,60 @@ class ActivitiesController < ApplicationController
       .select('sum(activities.work_hours) as totalh' ).take.totalh
 
 
-      render 'activities/departments_reports'
+      render 'activities/departments/departments_reports'
   end
+
+
+  def departments_project_result
+  end
+
+  def departments_period_result
+  end
+
+#reports for division head
+  def divisions_users_search
+      render 'activities/divisions/division_users_search'
+  end
+
+  def divisions_projects_search
+      render 'activities/divisions/division_projects_search'
+  end
+
+  def divisions_users_result
+  end
+
+  def divisions_projects_result
+  end
+
+#reports for director
+
+  def director_users_search
+      render 'activities/director/director_users_search'
+  end
+
+  def director_projects_search
+      render 'activities/director/director_projects_search'
+  end
+
+  def director_clients_search
+      render 'activities/director/director_clients_search'
+  end
+
+  def director_users_result
+  end
+
+  def director_projects_result
+  end
+
+  def director_clients_result
+  end
+
+
+
+  
+
+
+#end of reports
 
   # POST /activities
   # POST /activities.json

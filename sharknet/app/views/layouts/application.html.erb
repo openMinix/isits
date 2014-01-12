@@ -45,9 +45,8 @@
 		<% if current_user == nil %>
 		<% elsif current_user.user_job.title == "SEF DIVIZIE" %>
 			<li><%= link_to "View division timesheets", timesheets_divisions_path, :class => 'btn btn-default btn-sm' %></li>
-			<li><%= link_to "View user reports", activities_divisions_path, :class => 'btn btn-default btn-sm' %></li>
-			<li><%= link_to "View project reports", activities_divisions_project_path, :class => 'btn btn-default btn-sm' %></li>
-			<li><%= link_to "View period reports", activities_divisions_period_path, :class => 'btn btn-default btn-sm' %></li>
+			<li><%= link_to "View employees report", activities_divisions_users_path, :class => 'btn btn-default btn-sm' %></li>
+			<li><%= link_to "View projects report", activities_divisions_project_path, :class => 'btn btn-default btn-sm' %></li>
 
 		<%elsif current_user.user_job.title == "SEF DEPARTAMENT" %>
 			<li><%= link_to "View department timesheets", timesheets_departments_path, :class => 'btn btn-default btn-sm' %></li>
@@ -57,7 +56,9 @@
 
 		<%elsif current_user.user_job.title == "DIRECTOR" %>
 			<li><%= link_to "View company timesheets", timesheets_director_path, :class => 'btn btn-default btn-sm' %></li>
-			<li><%= link_to "View user reports", activities_departments_path, :class => 'btn btn-default btn-sm' %></li>
+			<li><%= link_to "View employees report", activities_director_users_path, :class => 'btn btn-default btn-sm' %></li>
+			<li><%= link_to "View projects report", activities_director_project_path, :class => 'btn btn-default btn-sm' %></li>
+			<li><%= link_to "View client reports", activities_director_clients_path, :class => 'btn btn-default btn-sm' %></li>
 		<% end %>
 	</ul>
 </div>
