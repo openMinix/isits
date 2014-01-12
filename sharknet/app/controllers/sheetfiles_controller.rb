@@ -39,6 +39,26 @@ class SheetfilesController < ApplicationController
     end
   end
 
+  def duplicate
+      @sheetfile = Sheetfile.find(params[:id])
+      new_sheetfile = @sheetfile.dup
+      new_sheetfile.created_at = Time.now
+      new_sheetfile.updated_at= Time.now
+      new_sheetfile.save
+
+      @sheetfile.activities.each do | activity |
+
+        new_act = activity.dup
+        new_act.created_at = Time.now
+        new_act.updated_at = Time.now
+        new_act.sheetfile_id = new_sheetfile.id
+        new_act.save
+      end
+
+      new_sheetfile.save
+      redirect_to :back
+  end 
+
   # PATCH/PUT /sheetfiles/1
   # PATCH/PUT /sheetfiles/1.json
   def update
@@ -58,7 +78,7 @@ class SheetfilesController < ApplicationController
   def destroy
     @sheetfile.destroy
     respond_to do |format|
-      format.html { redirect_to sheetfiles_url }
+      format.html { redirect_to :back}
       format.json { head :no_content }
     end
   end

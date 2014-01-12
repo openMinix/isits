@@ -56,7 +56,7 @@ class ClientsController < ApplicationController
   def destroy
     @client.destroy
     respond_to do |format|
-      format.html { redirect_to clients_url }
+      format.html { redirect_to :back}
       format.json { head :no_content }
     end
   end

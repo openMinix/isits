@@ -35,7 +35,7 @@ get 'activities/pdf_div_users' => 'activities#pdf_div_users', :as => :pdf_div_us
 
 # reports for director  
   get 'activities/director_users' => 'activities#director_users_search', :as => :activities_director_users
-  get 'activities/director_result' => 'activities#director_users_result', :as => :activities_dirresults_users
+  get 'activities/director_result' => 'activities#director_users_result', :as =>:activities_dirresults_users
 
   get 'activities/director_project' => 'activities#director_projects_search', :as => :activities_director_project
   get 'activities/director_project_result' => 'activities#director_projects_result', :as => :activities_dirresults_project
@@ -51,6 +51,7 @@ get 'activities/pdf_div_users' => 'activities#pdf_div_users', :as => :pdf_div_us
 
   resources :activities
 
+  get 'sheetfile/:id/duplicate' => 'sheetfiles#duplicate', :as => :duplicate_sheetfile
   resources :sheetfiles
 
 

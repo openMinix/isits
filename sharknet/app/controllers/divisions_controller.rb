@@ -66,7 +66,7 @@ class DivisionsController < ApplicationController
   def destroy
     @division.destroy
     respond_to do |format|
-      format.html { redirect_to divisions_url }
+      format.html { redirect_to :back}
       format.json { head :no_content }
     end
   end
