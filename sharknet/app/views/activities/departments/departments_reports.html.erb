@@ -16,16 +16,31 @@
 			</thead>
 
 			<tbody>
+				<% 
+					users_array = []
+				%>
 				<% @user_activities.each do |activity| %>
 					<tr>
 						<td><%= activity.project.client.client_name %></td>
+						<% users_array.push(activity.project.client.client_name) %>
+						
 						<td><%= activity.project.project_name %></td>
+						<% users_array.push(activity.project.project_name) %>
+						
 						<td><%= activity.hoursw %></td>
+						<% users_array.push(activity.hoursw) %>
+						
 						<td><%= activity.extrah %></td>
-						<td><%= (activity.hoursw/@total_hours.to_f )* 100%> %</td>
+						<% users_array.push(activity.extrah) %>
+						
+						<td><%= (activity.hoursw/@total_hours.to_f )* 100 %> %</td>
+						<% users_array.push((activity.hoursw/@total_hours.to_f )* 100) %>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
 	</div>
+	
+	<%= link_to(raw(("<i class='fa fa-plus-circle pr10'></i>") + "Make PDF"), {:controller => "activities", :action => "pdf_dept_users",:par => users_array}, {:class => 'btn btn-primary', :method => :get} ) %>
+
 </div>

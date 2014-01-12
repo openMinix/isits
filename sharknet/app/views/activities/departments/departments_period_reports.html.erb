@@ -13,13 +13,22 @@
 			</thead>
 	
 			<tbody>
+				<% 
+					users_array = []
+				%>
 				<% @user_activities.each do |project| %>
 					<tr>
 						<td><%= project.project_name %></td>
+						<% users_array.push(project.project_name) %>
+						
 						<td><%= project.hoursw %></td>
+						<% users_array.push(project.hoursw) %>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
 	</div>
+	
+	<%= link_to(raw(("<i class='fa fa-plus-circle pr10'></i>") + "Make PDF"), {:controller => "activities", :action => "pdf_dept_periods",:par => users_array}, {:class => 'btn btn-primary', :method => :get} ) %>
+
 </div>

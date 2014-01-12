@@ -1,0 +1,19 @@
+<%=
+	require "prawn"
+	Prawn::Document.generate('departments_projects.pdf') do |pdf|
+		
+		pdf.text('Raport proiecte si ore lucrate pentru toate departamentele din divizie', :align => :center, :size => 30)
+		pdf.table([
+			  ["Department name","Project name","Hours worked"]
+		])
+		
+		
+		@tmp.each do |userr| 
+		pdf.table([
+			  [userr]
+		])
+		end
+	end
+	
+%>		
+
