@@ -23,9 +23,15 @@
 					  <% else %>
 					  <td> <i class="fa fa-wheelchair pr10"></i>On medical vacation </td>
 					  <% end %>
+            <% if sheetfile.timesheet.status == 'OPEN' %>
+
 					<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit', edit_sheetfile_path(sheetfile) %></td>
 					<td><i class="fa fa-ban pr10"></i><%= link_to 'Destroy', sheetfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					<td><i class="fa fa-ban pr10"></i><%= link_to 'Duplicate', duplicate_sheetfile_path(sheetfile) %></td>
+
+                            <% else %>
+                                    <td>No current action available.</td>
+                       <% end %>
 				  </tr>
 				<% end %>
 			  </tbody>
@@ -33,7 +39,8 @@
 	</div>
 
 
+            <% if @sheetfiles.first.timesheet.status == 'OPEN' %>
 <%= link_to(raw(("<i class='fa fa-plus-circle pr10'></i>") + "Add sheetfile")  , new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet_id }), :class => "btn btn-success") %>
 
-
+          <% end %>
 </div>

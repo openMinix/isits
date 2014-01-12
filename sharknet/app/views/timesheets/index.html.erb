@@ -19,7 +19,7 @@
 				<td><%= timesheet.status %></td>
 				<td><%= timesheet.period %></td>
 				<td> <i class="fa fa-folder-open-o pr10"></i><%= link_to 'Show', timesheet %></td>
-				<% if timesheet.status != 'APPROVED' %> 
+				<% if timesheet.status == 'OPEN' %> 
 				<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
 				<% else %>
 				<td>Non-editable </td>

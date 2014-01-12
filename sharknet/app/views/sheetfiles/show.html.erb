@@ -24,7 +24,11 @@
 				<% else %>
 				  <td><i class="fa fa-smile-o pr10"></i>On vacation on this day.</td>
 				<% end %>
+        <% if @sheetfile.timesheet.status =='OPEN' %>
 				<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit', edit_sheetfile_path(@sheetfile) %></td>
+        <% else %>
+        <td>  Non Editable </td>
+        <% end %>
 			  </tr>
 		  </tbody>
 		</table>

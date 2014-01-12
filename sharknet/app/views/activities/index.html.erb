@@ -27,13 +27,21 @@
 				<td><%= activity.project.client.client_name%></td>
 				<td><%= activity.project.project_name %></td>
 				<td><i class="fa fa-folder-open-o pr10"></i><%= link_to 'Show', activity %></td>
+        <% if activity.sheetfile.timesheet.status == 'OPEN'  %>
 				<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit', edit_activity_path(activity) %></td>
 				<td><i class="fa fa-ban pr10"></i><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+          <td> Not editable</td>
+        <% end %>
 			  </tr>
 			<% end %>
 		  </tbody>
 		</table>
 	</div>
+
+
+        <% if @activities.first.sheetfile.timesheet.status == 'OPEN'  %>
 <%= link_to(raw(("<i class='fa fa-plus-circle pr10'></i>") + "Add activity"),new_activity_path(:my_activity => { :sheetfile_id => @sheetfile_id }), :class => "btn btn-success") %>
+        <% end %>
 
 </div>

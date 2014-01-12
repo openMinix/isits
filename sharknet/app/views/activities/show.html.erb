@@ -25,7 +25,11 @@
 					<td><%= @activity.description %></td>
 					<td><%= @activity.work_hours %></td>
 					<td><%= @activity.extra %></td>
+          <% if @activity.sheetfile.timesheet.status == 'OPEN'  %>
 					<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit',edit_activity_path(@activity) %>
+          <% else %>
+          <td>  Non-editable</td>
+          <% end %>
 				</tr>
 			</tbody>
 		</table>
