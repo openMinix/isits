@@ -3,17 +3,18 @@
 	Prawn::Document.generate('projects_for_department_head.pdf') do |pdf|
 		
 		pdf.text('Raport persoane au lucrat la proiect', :align => :center, :size => 30)
-		pdf.table([
+
+
+data= [
 			  ["Employee","Hours worked","Extra hours"]
-		])
-		
-		
-		@tmp.each do |userr| 
-		pdf.table([
-			  [userr]
-		])
-		end
-	end
-	
+      ]
+
+      @tmp.each_slice(3) do |userr|
+      data+=[
+      [userr[0],userr[1],userr[2]]
+      ]
+      end
+      pdf.table(data, :header => true )
+      end
 %>		
 

@@ -88,17 +88,71 @@ class ActivitiesController < ApplicationController
   
    def pdf_dept_users
 	@tmp = params[:par]
-	render 'activities/pdf_dept_users'
+
+    pdf =Prawn::Document.new do |pdf|
+
+       pdf.text('Raport nr. total de ore lucrat de angajat per fiecare proiect in parte', :align => :center, :size => 30)
+
+         data= [
+                 ["Client name","Project name","Hours worked","Extra hours","Percentage"]
+                     ]
+
+                         @tmp.each_slice(5) do |userr|
+                             data+=[
+                                     [userr[0],userr[1],userr[2],userr[3],userr[4]]
+                                         ]
+                                             end
+                                                 pdf.table(data, :header => true )
+                                                   end
+
+  send_data(pdf.render, :filename => "output.pdf", :type => "application/pdf")
   end
   
+
   def pdf_dept_projects
 	@tmp = params[:par]
-	render 'activities/pdf_dept_projects'
+	pdf =  Prawn::Document.new do |pdf|
+
+    pdf.text('Raport persoane au lucrat la proiect', :align => :center, :size => 30)
+
+
+data= [
+        ["Employee","Hours worked","Extra hours"]
+      ]
+
+      @tmp.each_slice(3) do |userr|
+      data+=[
+      [userr[0],userr[1],userr[2]]
+      ]
+      end
+      pdf.table(data, :header => true )
+      end
+
+send_data(pdf.render, :filename => "output.pdf", :type => "application/pdf")
   end
   
   def pdf_dept_periods
 	@tmp = params[:par]
-	render 'activities/pdf_dept_periods'
+
+	pdf =Prawn::Document.new do |pdf|
+
+    pdf.text('Raport nr. total de ore lucrate pentru fiecare proiect', :align => :center, :size => 30)
+
+data= [
+
+        ["Project name","Hours worked"]
+            ]
+
+                @tmp.each_slice(2) do |userr|
+                    data+=[
+                            [userr[0],userr[1]]
+                                ]
+                                    end
+                                        pdf.table(data, :header => true )
+                                          end
+
+send_data(pdf.render, :filename => "output.pdf", :type => "application/pdf")
+	
   end
 
 #reports for division head
@@ -119,13 +173,48 @@ class ActivitiesController < ApplicationController
   
   def pdf_div_users
 	@tmp = params[:par]
-	render 'activities/pdf_div_users'
+	pdf =Prawn::Document.new do |pdf|
+
+        pdf.text('Raport useri din departament', :align => :center, :size => 30)
+
+data= [
+
+        ["Employee name"]
+            ]
+
+                @tmp.each_slice(1) do |userr|
+                    data+=[
+                            [userr[0]]
+                                ]
+                                    end
+                                        pdf.table(data, :header => true )
+                                          end
+
+send_data(pdf.render, :filename => "output.pdf", :type => "application/pdf")
+	
   end
   
   def pdf_div_projects
 	@tmp = params[:par]
+	pdf =Prawn::Document.new do |pdf|
+
+       pdf.text('Raport proiecte si ore lucrate pentru toate departamentele din divizie', :align => :center, :size => 30)
+
+    data= [
+                         ["Department name","Project name","Hours worked"]
+            ]
+
+                @tmp.each_slice(4) do |userr|
+                    data+=[
+                            [userr[0],userr[1],userr[2],userr[3]]
+                                ]
+                                    end
+                                        pdf.table(data, :header => true )
+                                          end
+
+send_data(pdf.render, :filename => "output.pdf", :type => "application/pdf")
 	
-	render 'activities/pdf_div_projects'
+
   end
 
   
@@ -172,19 +261,70 @@ class ActivitiesController < ApplicationController
   
    def pdf_director_users
 	@tmp = params[:par]
-	render 'activities/pdf_director_users'
+	pdf =Prawn::Document.new do |pdf|
+
+        pdf.text('Raport useri din departament', :align => :center, :size => 30)
+
+data= [
+
+        ["Employee name"]
+            ]
+
+                @tmp.each_slice(1) do |userr|
+                    data+=[
+                            [userr[0]]
+                                ]
+                                    end
+                                        pdf.table(data, :header => true )
+                                          end
+
+send_data(pdf.render, :filename => "output.pdf", :type => "application/pdf")
   end
   
   def pdf_director_projects
 	@tmp = params[:par]
-	
-	render 'activities/pdf_director_projects'
+
+	pdf =Prawn::Document.new do |pdf|
+
+       pdf.text('Raport proiecte si ore lucrate pentru toate departamentele din divizie', :align => :center, :size => 30)
+
+    data= [
+                         ["Department name","Project name","Hours worked"]
+            ]
+
+                @tmp.each_slice(4) do |userr|
+                    data+=[
+                            [userr[0],userr[1],userr[2],userr[3]]
+                                ]
+                                    end
+                                        pdf.table(data, :header => true )
+                                          end
+
+send_data(pdf.render, :filename => "output.pdf", :type => "application/pdf")
+
   end
   
   def pdf_director_clients
 	@tmp = params[:par]
-	
-	render 'activities/pdf_director_clients'
+		pdf =Prawn::Document.new do |pdf|
+
+ pdf.text('Raport clienti', :align => :center, :size => 30)
+
+    data= [
+                         ["Project name","Project client","Hours worked"]
+            ]
+
+                @tmp.each_slice(3) do |userr|
+                    data+=[
+                            [userr[0],userr[1],userr[2]]
+                                ]
+                                    end
+                                        pdf.table(data, :header => true )
+                                          end
+
+send_data(pdf.render, :filename => "output.pdf", :type => "application/pdf")
+
+
   end
 
   def director_projects_result
