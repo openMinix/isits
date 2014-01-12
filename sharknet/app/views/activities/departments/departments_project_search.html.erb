@@ -4,6 +4,18 @@
 			<p>New reports</p>
 		</blockquote>
 
+		<div class="form-group">
+			<%= label_tag(:project_name, "Project name:") %>
+			<%= text_field_tag(:project_name, nil, :class => 'form-control') %>
+		</div>
+		<div class="form-group">
+			<%= label_tag(:recorddate, "Activities start date:") %>
+			<%= select_date Date.today, {prefix: :created_at}, {:class => 'form-control'} %>
+		</div>
+		<div class="form-group">
+			<%= label_tag(:recorddate, "Activities end date:") %>
+			<%= select_date Date.today, {prefix: :created_at_end}, {:class => 'form-control'} %>
+		</div>	
 
 	  <%= submit_tag "Generate", :class => "btn btn-success" %>
 	<% end %>

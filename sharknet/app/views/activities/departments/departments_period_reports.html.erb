@@ -7,10 +7,18 @@
 		<table class="table table-striped table-bordered table-hover table-condensed">
 			<thead>
 				<tr>
+					<td>Project name</td>
+					<td>Hours worked</td>
 				</tr>
 			</thead>
-
+	
 			<tbody>
+				<% @user_activities.each do |activity| %>
+					<tr>
+						<td><%= activity.project.project_name %></td>
+						<td><%= activity.hoursw %></td>
+					</tr>
+				<% end %>
 			</tbody>
 		</table>
 	</div>

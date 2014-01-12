@@ -59,9 +59,31 @@ class ActivitiesController < ApplicationController
 
 
   def departments_project_result
+	date_created_start = Date.civil(params[:created_at][:year].to_i, params[:created_at][:month].to_i, params[:created_at][:day].to_i)
+
+    date_created_end = Date.civil(params[:created_at_end][:year].to_i, params[:created_at_end][:month].to_i, params[:created_at_end][:day].to_i)
+
+	@project_idd = Project.select('id').where('project_name' => params[:project_name])
+	
+    @user_activities = Activity.joins(:sheetfile=> [{:timesheet=> :user}])
+    .where('activities.project_id'=> @project_idd).where('activities.created_at' => date_created_start.midnight..(date_created_end.midnight + 1.day) )
+    .select('activities.work_hours as hoursw,  (CASE activities.extra WHEN "true" THEN activities.work_hours ELSE 0 END) as extrah , activities.project_id, users.user_fullname ')
+
+    
+    render 'activities/departments/departments_project_reports'
   end
 
   def departments_period_result
+	date_created_start = Date.civil(params[:created_at][:year].to_i, params[:created_at][:month].to_i, params[:created_at][:day].to_i)
+
+    date_created_end = Date.civil(params[:created_at_end][:year].to_i, params[:created_at_end][:month].to_i, params[:created_at_end][:day].to_i)
+	
+    @user_activities = Activity.joins(:sheetfile=> [{:timesheet=> :user}])
+    .where('activities.created_at' => date_created_start.midnight..(date_created_end.midnight + 1.day) )
+    .select('sum(activities.work_hours) as hoursw,  sum(CASE activities.extra WHEN "true" THEN activities.work_hours ELSE 0 END) as extrah , activities.project_id ').group('activities.project_id')
+
+    
+    render 'activities/departments/departments_period_reports'
   end
 
 #reports for division head
@@ -74,9 +96,27 @@ class ActivitiesController < ApplicationController
   end
 
   def divisions_users_result
+	@dept_idd = Department.select('id').where('dept_name' => params[:dept_name])
+    @users = User.select( 'user_fullname as uf').where('department_id' => @dept_idd) 
+      render 'activities/divisions/divisions_users_reports'
   end
 
+  
   def divisions_projects_result
+	date_created_start = Date.civil(params[:created_at][:year].to_i, params[:created_at][:month].to_i, params[:created_at][:day].to_i)
+
+    date_created_end = Date.civil(params[:created_at_end][:year].to_i, params[:created_at_end][:month].to_i, params[:created_at_end][:day].to_i)
+	
+	@my_div_id = Division.select('id').where('user_id' => params[:my_current_user_id]);
+	
+	@user_activities = Activity.joins(:sheetfile=> [{:timesheet=> :user}])
+    .where('activities.created_at' => date_created_start.midnight..(date_created_end.midnight + 1.day) )
+    .select('sum(activities.work_hours) as hoursw,  activities.project_id ').group('activities.project_id')
+
+	
+	
+	
+	 render 'activities/divisions/divisions_projects_reports'
   end
 
 #reports for director

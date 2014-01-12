@@ -4,6 +4,11 @@
 			<p>New reports</p>
 		</blockquote>
 
+		<div class="form-group">
+			<%= label_tag(:dept_name, "Department name:") %>
+			<%= text_field_tag(:dept_name, nil, :class => 'form-control') %>
+		</div>
+		
 	  <%= submit_tag "Generate", :class => "btn btn-success" %>
 	<% end %>
 </div>
