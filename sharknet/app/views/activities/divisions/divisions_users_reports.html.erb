@@ -12,12 +12,18 @@
 			</thead>
 
 			<tbody>
+				<% users_array = [] %>
 				<% @users.each do |userr| %>
 					<tr>
 						<td><%= userr.uf %></td>
+						<% users_array.push(userr.uf) %>
 					</tr>
 				<% end %>	
 			</tbody>
 		</table>
 	</div>
+	
+	<%= link_to(raw(("<i class='fa fa-plus-circle pr10'></i>") + "Make PDF"), {:controller => "activities", :action => "pdf_div_users",:par => users_array}, {:class => 'btn btn-primary', :method => :get} ) %>
+
+	
 </div>
