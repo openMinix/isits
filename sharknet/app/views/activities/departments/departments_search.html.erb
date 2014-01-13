@@ -6,7 +6,8 @@
 
 		<div class="form-group">
 			<%= label_tag(:id, "User ID:") %>
-			<%= text_field_tag(:id, nil, :class => 'form-control') %>
+      <%= select_tag :id, options_from_collection_for_select(User.all, "id", "user_fullname") %>
+
 		</div>
 		<div class="form-group">
 			<%= label_tag(:recorddate, "Activities start date:") %>

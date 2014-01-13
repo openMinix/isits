@@ -15,6 +15,7 @@
 				  <th>Description</th>
 				  <th>Work hours</th>
 				  <th>Extra</th>
+          <th>Project</th>
 				  <th>Action</th>
 				</tr>
 			</thead>
@@ -25,6 +26,7 @@
 					<td><%= @activity.description %></td>
 					<td><%= @activity.work_hours %></td>
 					<td><%= @activity.extra %></td>
+          <td><%= @activity.project.project_name %> </td>
           <% if @activity.sheetfile.timesheet.status == 'OPEN' and @activity.sheetfile.timesheet.user.id == current_user.id  %>
 					<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit',edit_activity_path(@activity) %>
           <% else %>

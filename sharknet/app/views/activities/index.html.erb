@@ -40,7 +40,7 @@
 	</div>
 
 
-        <% if @activities or @activities.first.sheetfile.timesheet.status == 'OPEN'  %>
+        <% if @activities.first == nil or @activities.first.sheetfile.timesheet.status == 'OPEN'  %>
 <%= link_to(raw(("<i class='fa fa-plus-circle pr10'></i>") + "Add activity"),new_activity_path(:my_activity => { :sheetfile_id => @sheetfile_id }), :class => "btn btn-success") %>
         <% end %>
 

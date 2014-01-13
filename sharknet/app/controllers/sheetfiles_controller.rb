@@ -76,7 +76,12 @@ class SheetfilesController < ApplicationController
   # DELETE /sheetfiles/1
   # DELETE /sheetfiles/1.json
   def destroy
+
+    @sheetfile.activities.each do | activity |
+      activity.destroy
+    end
     @sheetfile.destroy
+
     respond_to do |format|
       format.html { redirect_to :back}
       format.json { head :no_content }

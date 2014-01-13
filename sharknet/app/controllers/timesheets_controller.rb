@@ -95,6 +95,14 @@ class TimesheetsController < ApplicationController
   # DELETE /timesheets/1
   # DELETE /timesheets/1.json
   def destroy
+    @timesheet.sheetfiles.each do | sheetfile |
+      sheetfile.activities.each do | activity |
+        activity.destroy
+      end
+
+      sheetfile.destroy
+    end
+
     @timesheet.destroy
     respond_to do |format|
       format.html { redirect_to :back}

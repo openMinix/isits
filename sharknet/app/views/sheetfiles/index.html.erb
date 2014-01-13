@@ -39,7 +39,7 @@
 	</div>
 
 
-            <% if @sheetfiles != nil or @sheetfiles.first.timesheet.status == 'OPEN' %>
+            <% if @sheetfiles.first == nil or @sheetfiles.first.timesheet.status == 'OPEN' %>
 <%= link_to(raw(("<i class='fa fa-plus-circle pr10'></i>") + "Add sheetfile")  , new_sheetfile_path(:my_sheetfile => { :timesheet_id => @timesheet_id }), :class => "btn btn-success") %>
 
           <% end %>

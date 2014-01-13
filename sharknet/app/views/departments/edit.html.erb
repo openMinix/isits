@@ -16,7 +16,7 @@
 		<div class="form-group">
 			<%= fields_for @department.division do |division_fields| %>
 			<%= f.label :division %><br>
-			<%= division_fields.text_field :div_name,:class => 'form-control' %>
+			<%= division_fields.text_field :div_name,:class => 'form-control', :readonly => true %>
 			<% end %>
 		</div>
 		
