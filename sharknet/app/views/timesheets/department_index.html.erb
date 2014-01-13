@@ -23,7 +23,7 @@
 				<% if timesheet.status == 'SUBMITTED' %>
 				<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
 				<% else %>
-				<td>Non-editable</td>
+				<td><i class="fa fa-unlock-alt pr10"></i>Non-editable</td>
 				<% end %>
 			  </tr>
 			<% end %>

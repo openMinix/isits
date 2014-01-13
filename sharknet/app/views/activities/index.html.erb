@@ -31,7 +31,7 @@
 				<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit', edit_activity_path(activity) %></td>
 				<td><i class="fa fa-ban pr10"></i><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% else %>
-          <td> Not editable</td>
+          <td> <i class="fa fa-unlock-alt pr10"></i>Not editable</td>
         <% end %>
 			  </tr>
 			<% end %>

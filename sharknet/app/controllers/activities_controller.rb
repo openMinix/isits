@@ -204,9 +204,9 @@ send_data(pdf.render, :filename => "output.pdf", :type => "application/pdf")
                          ["Department name","Project name","Hours worked"]
             ]
 
-                @tmp.each_slice(4) do |userr|
+                @tmp.each_slice(3) do |userr|
                     data+=[
-                            [userr[0],userr[1],userr[2],userr[3]]
+                            [userr[0],userr[1],userr[2]]
                                 ]
                                     end
                                         pdf.table(data, :header => true )

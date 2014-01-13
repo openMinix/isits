@@ -22,7 +22,7 @@
 		</div>
 		<div class="form-group">
 			<%= f.label :work_hours %>
-      <%= f.select :work_hours, [['1 hour',1],['2 hours', 2],['3 hours ',3],['4 hours', 4], ['5 hours',5], ['6 hours', 6] , ['7 hours', 7], ['8 hours',8] ] %>
+      <%= f.select :work_hours, [['1 hour',1],['2 hours', 2],['3 hours ',3],['4 hours', 4], ['5 hours',5], ['6 hours', 6] , ['7 hours', 7], ['8 hours',8] ], {}, { :class=> "form-control" } %>
 		</div>
 		<div class="form-group">
 			<%= f.label :extra %>
