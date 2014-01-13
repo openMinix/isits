@@ -69,6 +69,10 @@ class DivisionsController < ApplicationController
   # DELETE /divisions/1
   # DELETE /divisions/1.json
   def destroy
+    @division.departments.each do | department |
+      department.destroy
+    end
+
     @division.destroy
     respond_to do |format|
       format.html { redirect_to :back}
