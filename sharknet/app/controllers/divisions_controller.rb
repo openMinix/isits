@@ -46,6 +46,11 @@ class DivisionsController < ApplicationController
   # PATCH/PUT /divisions/1
   # PATCH/PUT /divisions/1.json
   def update
+
+   if @division.user != nil
+        @division.user.update("user_job_id"=> 1 )
+   end
+
     respond_to do |format|
       if @division.update(division_params)
         @userM = User.find(@division.user.id) 

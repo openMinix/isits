@@ -23,10 +23,9 @@
 					Nobody assigned
 				  <% else %>
 					 <td><%= @division.user.user_fullname%></td>
-					
+				  <% end %>
 				<td><i class="fa fa-folder-open-o pr10"></i><%= link_to 'View departments', departments_path(:my_department => { :division_id => @division.id }) %>
 				<td><i class="fa fa-pencil pr10"></i><%= link_to 'Edit', edit_division_path(@division) %>
-				  <% end %>
 				</tr>
 			</tbody>	  	  
 		</table>	

@@ -47,6 +47,11 @@ class DepartmentsController < ApplicationController
   # PATCH/PUT /departments/1
   # PATCH/PUT /departments/1.json
   def update
+
+          if @department.user != nil
+            @department.user.update("user_job_id"=> 1 )
+          end  
+
     respond_to do |format|
       if @department.update(department_params)
         @userM = User.find(@department.user.id) 

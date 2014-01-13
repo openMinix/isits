@@ -43,6 +43,8 @@ class MembershipsController < Devise::RegistrationsController
   # DELETE /resource
   def destroy
     @user = User.find(params[:id])
+    Department.where(:user_id => @user.id).update_all(:user_id => nil )
+    Division.where(:user_id => @user.id).update_all(:user_id => nil )
     @user.destroy
 
     if @user.destroy
