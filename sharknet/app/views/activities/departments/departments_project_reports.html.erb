@@ -32,6 +32,6 @@
 			</tbody>
 		</table>
 	</div>
-	<%= link_to(raw(("<i class='fa fa-plus-circle pr10'></i>") + "Make PDF"), {:controller => "activities", :action => "pdf_dept_projects",:par => users_array}, {:class => 'btn btn-primary', :method => :get} ) %>
+	<%= link_to(raw(("<i class='fa fa-download pr10'></i>") + "Download PDF"), {:controller => "activities", :action => "pdf_dept_projects",:par => users_array}, {:class => 'btn btn-primary', :method => :get} ) %>
 
 </div>
